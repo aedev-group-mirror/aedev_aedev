@@ -1,6 +1,6 @@
 
 ..
-    THIS FILE IS EXCLUSIVELY MAINTAINED by the project tpl_namespace_root V0.3.6 
+    THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.tpl_namespace_root V0.3.8 
 
 namespace portions documentation
 ################################

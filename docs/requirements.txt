@@ -1,4 +1,4 @@
-# THIS FILE IS EXCLUSIVELY MAINTAINED by the project tpl_project V0.3.4 
+# THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.tpl_project V0.3.5 
 # RTD-build is failing if the Sphinx dependency is included without a pinned version (RTD was using 1.8.5 by default).
 # Also Sphinx 3.0 is showing lots of warnings: https://github.com/sphinx-doc/sphinx/issues/7429 recommends removing the
 # typehints extension (currently not changed/touched). WORKAROUND: pin Sphinx version here (used then by RTD too).

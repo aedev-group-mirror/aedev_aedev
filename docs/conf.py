@@ -1,4 +1,4 @@
-# THIS FILE IS EXCLUSIVELY MAINTAINED by the project tpl_project V0.3.4 
+# THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.tpl_project V0.3.5 
 """
 configuration file for the Sphinx documentation builder
 =======================================================
@@ -35,7 +35,9 @@ import sys
 # found at https://github.com/readthedocs/sphinx_rtd_theme - not needed
 # import sphinx_rtd_theme
 
-from aedev.setup_project import pev_str, pev_val, project_env_vars
+from typing import Any, Dict
+
+from aedev.setup_project import pev_str, pev_val, project_env_vars      # type: ignore
 
 # add project root path, above of this file (conf.py) and the docs folder, to sys.path
 project_path = os.path.dirname(os.path.dirname(__file__))
@@ -77,25 +79,25 @@ extensions.extend(_ for _ in docs_require if _.startswith("sphinx_"))   # remove
 
 # -- autodoc config
 # None==enabled (True failing on RTD builds - replaced with None) - see https://github.com/sphinx-doc/sphinx/issues/5459
-enabled = None
-autodoc_default_options = dict(
-    autosummary_generate=enabled,
-    members=enabled,
+ENABLED = None
+autodoc_default_options: Dict[str, Any] = dict(
+    autosummary_generate=ENABLED,
+    members=ENABLED,
 )
 autodoc_default_options['member-order'] = 'bysource'
-autodoc_default_options['private-members'] = enabled
-autodoc_default_options['special-members'] = enabled
-autodoc_default_options['undoc-members'] = enabled
-autodoc_default_options['show-inheritance'] = enabled
+autodoc_default_options['private-members'] = ENABLED
+autodoc_default_options['special-members'] = ENABLED
+autodoc_default_options['undoc-members'] = ENABLED
+autodoc_default_options['show-inheritance'] = ENABLED
 autodoc_default_options['exclude-members'] = ", ".join(
     ('_abc_impl', '_abc_cache', '_abc_negative_cache', '_abc_negative_cache_version', '_abc_registry',
      '__abstractmethods__', '__annotations__', '__atom_members__', '__dict__', '__module__', '__slots__', '__weakref__',
      ))
 
-autosummary_generate = True
-add_module_names = False
-add_function_parentheses = True
-numfig = True
+autosummary_generate = True         # pylint: disable=invalid-name
+add_module_names = False            # pylint: disable=invalid-name
+add_function_parentheses = True     # pylint: disable=invalid-name
+numfig = True                       # pylint: disable=invalid-name
 
 # add any paths that contain templates here, relative to this directory.
 # templates_path = ['_templates', '_templates/autosummary']
@@ -117,7 +119,7 @@ intersphinx_mapping = dict(
 # -- options for HTML output -------------------------------------------------
 
 # the theme to use for HTML and HTML Help pages. see the documentation for a list of builtin themes.
-html_theme = 'sphinx_rtd_theme'  # 'alabaster'
+html_theme = 'sphinx_rtd_theme'  # pylint: disable=invalid-name # 'alabaster'
 
 # NEXT TWO VARIABLES TAKEN FROM https://github.com/romanvm/sphinx_tutorial/blob/master/docs/conf.py
 # theme options are theme-specific and customize the look and feel of a theme further. for a list of options available
@@ -133,7 +135,7 @@ if html_theme == 'alabaster':
     )
 
     # custom sidebar templates, maps document names to template names. sidebars configuration for alabaster theme:
-    html_sidebars = dict()
+    html_sidebars = dict()      # pylint: disable=use-dict-literal
     html_sidebars['**'] = [
         'about.html',
         'navigation.html',
@@ -154,7 +156,7 @@ elif html_theme == 'sphinx_rtd_theme':
 
 # prevent RTD build fail with 'contents.rst not found' error
 # .. see https://github.com/readthedocs/readthedocs.org/issues/2569
-master_doc = 'index'        # Sphinx default is 'index', whereas RTD default is 'contents'
+master_doc = 'index'    # pylint: disable=invalid-name # Sphinx default is 'index', whereas RTD default is 'contents'
 
 
 # workaround Kivy bug until fixing PR #7435 get released (with Kivy 2.1.0)

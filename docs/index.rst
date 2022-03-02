@@ -1,6 +1,6 @@
 
 ..
-    THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.tpl_namespace_root V0.3.8 
+    THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.tpl_namespace_root V0.3.10 
 
 namespace portions documentation
 ################################
@@ -44,8 +44,8 @@ a :pep:`namespace <420>` splits the codebase of a library or framework into mult
 portions (of the namespace).
 
 .. hint::
-    the portions of the `aedev` namespace are providing `the grm tool to create and maintain
-    any namespace and its portions <https://aedev.readthedocs.io/en/latest/_autosummary/aedev.git_repo_manager.html>`__.
+    the `aedev` namespace is providing `the grm tool to create and maintain any namespace and its portions
+    <https://aedev.readthedocs.io/en/latest/man/git_repo_manager.html>`__.
 
 the id of a new namespace consists of letters only and has to be available on PYPI. the group-name name gets by default
 generated from the namespace name plus the suffix ``'-group'``, so best choose an id that results in a group name that

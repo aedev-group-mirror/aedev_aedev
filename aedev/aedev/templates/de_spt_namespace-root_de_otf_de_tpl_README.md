@@ -1,4 +1,4 @@
-<!-- THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.tpl_namespace_root V0.3.8 -->
+<!-- THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.tpl_namespace_root V0.3.10 -->
 # {portion_name} {package_version}
 
 [![GitLab develop](https://img.shields.io/gitlab/pipeline/{repo_group}/{package_name}/develop?logo=python)](
@@ -72,5 +72,5 @@ more detailed explanations on how to contribute to this project
 
 information on the features and usage of this portion are available at
 [ReadTheDocs](
-https://{namespace_name}.readthedocs.io/en/latest/_autosummary/{import_name}.html#module-{import_name}
+{docs_url}
 "{package_name} documentation").

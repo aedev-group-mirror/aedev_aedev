@@ -47,7 +47,7 @@ an identical abbreviated execution using the short command line options and the 
 
 
 repository status
-=================
+-----------------
 
 several actions are determining the status of a project, like e.g. `show-status`, `show-repo`, `check-integrity` and
 `show-versions`.
@@ -57,7 +57,7 @@ branch on the 'origin' remote, execute `grm` with the `update-project` action.
 
 
 file patching helper functions
-==============================
+------------------------------
 
 this portion is also providing some helper functions to patch code and documentation files.
 
@@ -74,4 +74,41 @@ and updated individually for each portion project.
 .. hint::
     via the namespace root project, e.g. `the ae namespace <https://gitlab.com/ae-group/ae>`_ and the
     `this aedev namespace <https://gitlab.com/aedev-group/aedev>`_, their namespace portions are maintainable by `grm`.
+
+
+available command line options
+==============================
+
+filtering children of projects parent or namespace root
+-------------------------------------------------------
+
+bulk actions like `show-children-versions` are processing by default all its children, which are either all projects
+under a projects parent folder or all the portions of a namespace root. the command line options `filterExpression`
+and `filterBranch` allow to filter or select specific children. the selected/filtered children are then available as a
+children-set-expression with the same name as the specified option.
+
+specify the name of a branch with the `filterBranch` option to only process children projects that have the specified
+branch name checked-out. e.g. to only process all children that have checked out the branch ``my_branch`` run::
+
+    grm --filterBranch=my_branch <children-bulk-action> filterBranch
+
+exactly the same selection result could be achieved via a more complex Python expression, using the `filterExpression`
+option/children-set-expression::
+
+    grm --filterExpression="_git_current_branch(chi_pdv)=='my_branch'" <children-bulk-action> filterExpression
+
+.. hint::
+    the filter expression should be included in high-commas and can contain any globals of the git-repo-manager project.
+    also all project environment variables of the children project can be used in such expression. additionally the
+    variable `chi_pdv` can be used to directly access the project environment variable.
+
+the next example is selection all children with the same version number, by using the project environment variable
+`package_version`::
+
+    grm --filterExpression "package_version=='1.2.3'" <children-bulk-action> filterExpression
+
+the example underneath is showing the local, remote and PyPI versions of the children projects that have a branch
+(checked-out or not) with the name ``my_branch`` in their repository::
+
+  grm -F "'my_branch' in _git_branches(chi_pdv)" show-children-versions filterExpression
 

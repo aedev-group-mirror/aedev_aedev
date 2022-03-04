@@ -72,20 +72,27 @@ portions file (even the ``setup.py`` file) can be created/maintained as a templa
 and updated individually for each portion project.
 
 .. hint::
-    via the namespace root project, e.g. `the ae namespace <https://gitlab.com/ae-group/ae>`_ and the
-    `this aedev namespace <https://gitlab.com/aedev-group/aedev>`_, their namespace portions are maintainable by `grm`.
+    children bulk actions on portions of a namespace can be processed by `grm` via their namespace root project, e.g.
+    `the ae namespace root project <https://gitlab.com/ae-group/ae_ae>`_ or the
+    `the aedev namespace root project <https://gitlab.com/aedev-group/aedev_aedev>`_.
 
 
 available command line options
 ==============================
 
+general command line options like e.g. `path` and `package` can be specified for any action.
+
+other options like e.g. the filter options `filterBranch` and `filterExpression` are only recognized by children bulk
+actions.
+
+
 filtering children of projects parent or namespace root
 -------------------------------------------------------
 
-bulk actions like `show-children-versions` are processing by default all its children, which are either all projects
-under a projects parent folder or all the portions of a namespace root. the command line options `filterExpression`
-and `filterBranch` allow to filter or select specific children. the selected/filtered children are then available as a
-children-set-expression with the same name as the specified option.
+bulk actions, like e.g. `show-children-versions`, are processing by default all its children, which are either all
+projects under a projects parent folder or all the portions of a namespace. the command line options
+`filterExpression` and `filterBranch` allow to filter or select specific children. the selected/filtered children are
+then available as a children-set-expression with the same name as the specified option.
 
 specify the name of a branch with the `filterBranch` option to only process children projects that have the specified
 branch name checked-out. e.g. to only process all children that have checked out the branch ``my_branch`` run::

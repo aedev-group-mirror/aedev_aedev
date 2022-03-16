@@ -11,8 +11,11 @@ to installing this tool open a console window and run the following command::
 after the installation the ``grm`` command will be available in your OS console.
 
 
+usage of grm
+============
+
 remote server authentication
-============================
+----------------------------
 
 actions with write access to the remote repository server, like e.g. `push-project`, are requesting authentication via
 the :ref:`config-options` `gitToken` and `gitUser`.
@@ -24,8 +27,8 @@ the :ref:`config-options` `gitToken` and `gitUser`.
    a function _get_repo_url() could be implemented to replace all usages of pdv_str(..., 'repo_url') and 'origin'.
 
 
-available actions
-=================
+command line options and action arguments
+-----------------------------------------
 
 check the available command line arguments and options by specifying the `--help` command line option::
 
@@ -47,7 +50,7 @@ an identical abbreviated execution using the short command line options and the 
 
 
 repository status
------------------
+^^^^^^^^^^^^^^^^^
 
 several actions are determining the status of a project, like e.g. `show-status`, `show-repo`, `check-integrity` and
 `show-versions`.
@@ -57,7 +60,7 @@ branch on the 'origin' remote, execute `grm` with the `update-project` action.
 
 
 file patching helper functions
-------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 this portion is also providing some helper functions to patch code and documentation files.
 
@@ -78,7 +81,7 @@ and updated individually for each portion project.
 
 
 available command line options
-==============================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 general command line options like e.g. `path` and `package` can be specified for any action.
 
@@ -87,7 +90,7 @@ actions.
 
 
 filtering children of projects parent or namespace root
--------------------------------------------------------
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 bulk actions, like e.g. `show-children-versions`, are processing by default all its children, which are either all
 projects under a projects parent folder or all the portions of a namespace. the command line options

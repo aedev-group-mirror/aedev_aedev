@@ -100,13 +100,8 @@ the following list contains all registered portions of the aedev namespace.
 
     aedev.setup_project
     aedev.tpl_project
-    aedev.tpl_project.de_otf_setup
-    aedev.tpl_project.de_otf_conftest
-    aedev.tpl_project.de_otf_de_tpl_test_{portion_name or package_name}
-    aedev.tpl_project.de_otf_de_tpl_conf
     aedev.tpl_namespace_root
     aedev.tpl_app
-    aedev.tpl_app.main
     aedev.git_repo_manager
     aedev.setup_hook
 

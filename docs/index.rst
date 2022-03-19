@@ -69,7 +69,7 @@ follow the steps underneath to register and add a new portion into the `aedev` n
    templates) and to get a pre-configured git repository (with the remote already set and the initial files unstaged, to
    be extended, staged and finally committed).
 4. run ``cd aedev_<portion-name>`` to change the current to the working tree root of the new portion project.
-5. run `pyenv local \<venv_name\> <https://pypi.org/project/pyenv/>`__ (or any other similar tool) to create/prepare a
+5. run `pyenv local venv_name <https://pypi.org/project/pyenv/>`__ (or any other similar tool) to create/prepare a
    local virtual environment.
 6. fans of TDD are then coding unit tests in the prepared test module `test_aedev_<portion-name>.py`,
    situated within the `tests` sub-folder of your new code project folder.

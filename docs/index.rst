@@ -1,6 +1,6 @@
 
 ..
-    THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.tpl_namespace_root V0.3.10
+    THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.tpl_namespace_root V0.3.12
 
 namespace portions documentation
 ################################
@@ -40,7 +40,7 @@ design pattern and software principles
 create new namespace
 ====================
 
-a :pep:`namespace <420>` splits the codebase of a library or framework into multiple project repositories, called
+a :pep:`420` namespace splits the codebase of a library or framework into multiple project repositories, called
 portions (of the namespace).
 
 .. hint::
@@ -55,30 +55,32 @@ is available on your repository server.
 register a new namespace portion
 ================================
 
-the registration of a new portion to the aedev namespace has to be done by one of the namespace maintainers.
-
-registered portions will automatically be included into the `aedev namespace documentation`, available at
-`ReadTheDocs <https://aedev.readthedocs.io>`__.
-
-follow the steps underneath to register and add a new portion into the `aedev` namespace:
+follow the steps underneath to add and register a new module as portion onto the `aedev` namespace:
 
 1. open a console window and change the current directory to the parent directory of your projects root folders.
 2. choose a not-existing/unique name for the new portion (referred as `<portion-name>` in the next steps).
-3. run ``grm --namespace=aedev new-module <portion_name>`` to register the portion name within the namespace,
-   to create a new project folder `aedev_<portion-name>` (providing initial project files created from
-   templates) and to get a pre-configured git repository (with the remote already set and the initial files unstaged, to
-   be extended, staged and finally committed).
-4. run ``cd aedev_<portion-name>`` to change the current to the working tree root of the new portion project.
-5. run `pyenv local venv_name <https://pypi.org/project/pyenv/>`__ (or any other similar tool) to create/prepare a
-   local virtual environment.
+3. run ``grm --namespace=aedev --package=<portion_name> new-module`` to register the portion
+   name within the namespace, to create a new project folder `aedev_<portion-name>` (providing
+   initial project files created from templates) and to get a pre-configured git repository (with the remote
+   already set and the initial files unstaged, to be extended, staged and finally committed).
+4. run ``cd aedev_<portion-name>`` to change the current to the working tree root
+   of the new portion project.
+5. run `pyenv local venv_name <https://pypi.org/project/pyenv/>`__ (or any other similar tool) to
+   create/prepare a local virtual environment.
 6. fans of TDD are then coding unit tests in the prepared test module `test_aedev_<portion-name>.py`,
    situated within the `tests` sub-folder of your new code project folder.
 7. extend the file <portion_name>.py situated in the `aedev` sub-folder to implement the new portion.
 8. run ``grm check-integrity`` to run the linting and unit tests (if they fail go one or two steps back).
-9. run ``grm prepare``, then amend the commit message within the file `.commit_msg.txt`, then run ``grm commit``
-   and ``grm push`` to commit and upload your new portion to your personal remote/server repository fork, and finally
-   run ``grm request`` to request the merge/pull into the forked/upstream repository in the users group `aedev-group`
-   (at https://gitlab.com/aedev-group).
+9. run ``grm prepare``, then amend the commit message within the file `.commit_msg.txt`,
+   then run ``grm commit`` and ``grm push`` to commit and upload your new portion to your personal
+   remote/server repository fork, and finally run ``grm request`` to request the merge/pull into
+   the forked/upstream repository in the users group `aedev-group` (at https://gitlab.com/aedev-group).
+
+the registration of a new portion to the aedev namespace has to be done by a namespace maintainer.
+
+registered portions will automatically be included into the `aedev namespace documentation`, available at
+`ReadTheDocs <https://aedev.readthedocs.io>`__.
+
 
 
 .. _aedev-portions:
@@ -86,12 +88,14 @@ follow the steps underneath to register and add a new portion into the `aedev` n
 registered namespace package portions
 *************************************
 
-the following list contains all registered portions of the aedev namespace.
+the following list contains all registered portions of the aedev namespace, plus additional modules of each
+portion.
 
 
 .. hint::
-    portions with no dependencies are at the begin of the following list. the portions that are depending on other
-    portions of the aedev namespace are listed more to the end.
+    a not on the ordering: portions with no dependencies are at the begin of the following list.
+    the portions that are depending on other portions of the aedev namespace
+    are listed more to the end.
 
 
 .. autosummary::
@@ -117,9 +121,8 @@ manuals and tutorials
 indices and tables
 ******************
 
+* `portion repositories at gitlab.com <https://gitlab.com/aedev-group>`__
 * :ref:`genindex`
 * :ref:`modindex`
-* :ref:`search`
-* `portion repositories at gitlab.com <https://gitlab.com/aedev-group>`__
-* ae namespace `projects <https://gitlab.com/ae-group>`__ and `documentation <https://ae.readthedocs.io>`__
-* aedev `projects <https://gitlab.com/aedev-group>`__ and `documentation <https://aedev.readthedocs.io>`__
+* ``ae`` namespace `projects <https://gitlab.com/ae-group>`__ and `documentation <https://ae.readthedocs.io>`__
+* ``aedev`` namespace `projects <https://gitlab.com/aedev-group>`__ and `documentation <https://aedev.readthedocs.io>`__

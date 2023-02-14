@@ -1,4 +1,4 @@
-<!-- THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.tpl_namespace_root V0.3.12 -->
+<!-- THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.tpl_namespace_root V0.3.13 -->
 # __aedev__ namespace-root project
 
 aedev namespace-root: aedev namespace root, providing setup, development and documentation tools/templates for Python projects.

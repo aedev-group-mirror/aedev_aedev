@@ -1,12 +1,13 @@
-# THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.tpl_project V0.3.20
+# THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.tpl_project V0.3.24
+# noinspection GrazieInspection
 """
 configuration file for the Sphinx documentation builder
 =======================================================
 
 this file only contains a selection of the most common options. for a full list see the documentation at
-`http://www.sphinx-doc.org/en/master/config`__.
+`https://www.sphinx-doc.org/en/master/config`__.
 
-recommended section header underlines (see also `https://devguide.python.org/documenting/#sections`__ and
+recommended section header underlines (see also `https://devguide.python.org/documentation/markup/#sections`__ and
 `https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#sections`__):
 
     # with over-line, for parts
@@ -14,7 +15,7 @@ recommended section header underlines (see also `https://devguide.python.org/doc
     =, for sections
     -, for subsections
     ^, for sub-subsections
-    ", for paragraphs
+    _, for paragraphs (changed because the double-high-comma cannot be used in docstrings).
 
 
 ReadTheDocs Server Infrastructure Configuration
@@ -66,6 +67,7 @@ version = pev_str(root_pev, 'package_version')
 extensions = [
     # 'sphinx.ext.autodoc',         # automatically added by autosummary
     'sphinx.ext.autosummary',
+    'sphinx.ext.doctest',           # check doctest (>>>) in docstrings
     'sphinx.ext.viewcode',          # include package module source code
     'sphinx.ext.intersphinx',
     'sphinx.ext.graphviz',

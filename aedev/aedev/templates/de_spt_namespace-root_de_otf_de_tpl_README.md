@@ -1,4 +1,4 @@
-<!-- THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.tpl_namespace_root V0.3.12 -->
+<!-- THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.tpl_namespace_root V0.3.13 -->
 # {portion_name} {package_version}
 
 [![GitLab develop](https://img.shields.io/gitlab/pipeline/{repo_group}/{package_name}/develop?logo=python)](

@@ -1,6 +1,6 @@
 
 ..
-    THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.tpl_namespace_root V0.3.12
+    THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.tpl_namespace_root V0.3.13
 
 namespace portions documentation
 ################################
@@ -107,6 +107,7 @@ portion.
     aedev.tpl_namespace_root
     aedev.tpl_app
     aedev.git_repo_manager
+    aedev.git_repo_manager.__main__
     aedev.setup_hook
 
 

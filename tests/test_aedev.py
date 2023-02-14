@@ -1,4 +1,4 @@
-# THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.tpl_project V0.3.20
+# THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.tpl_project V0.3.24
 # pylint: disable=invalid-name
 """ default integration and unit tests for new app/namespace-root/aedev-template/... projects.
 
@@ -9,8 +9,7 @@ this template) with an import statement.
 import importlib
 import os
 
-from ae.base import TESTS_FOLDER                # type: ignore
-from ae.inspector import module_attr            # type: ignore
+from ae.base import TESTS_FOLDER, module_attr                               # type: ignore
 
 
 main_imp_name = "aedev.aedev"

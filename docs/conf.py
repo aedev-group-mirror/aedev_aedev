@@ -1,4 +1,4 @@
-# THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.tpl_project V0.3.24
+# THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.tpl_project V0.3.25
 # noinspection GrazieInspection
 """
 configuration file for the Sphinx documentation builder
@@ -21,7 +21,12 @@ recommended section header underlines (see also `https://devguide.python.org/doc
 ReadTheDocs Server Infrastructure Configuration
 ===============================================
 
-go to `https://readthedocs.org/dashboard/aedev_aedev/advanced`__ (Admin) to configure the following settings:
+.. note::
+    use .readthedocs.yaml to get actual versions of Python (>3.7, see https://blog.readthedocs.com/default-python-3/)
+    and Sphinx (>1.8).
+
+for old versions configure on the ReadTheDocs server (`https://readthedocs.org/dashboard/aedev_aedev/advanced`__)
+in the Admin area the following settings:
 
     * Settings/Programming Language: **Python**
     * Advanced Settings/Global settings/Default branch: **develop**

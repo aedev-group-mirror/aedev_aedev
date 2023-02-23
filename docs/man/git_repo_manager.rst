@@ -98,16 +98,6 @@ actions for your other repository maintenance workflows are e.g.
 `push_project`, `push_children`, `request_merge`, `request_children_merge`, `release_project`, `release_children`,
 `install_editable`, and `install_children_editable`.
 
-e.g., to bulk-update multiple children projects in a :ref:`contribution process <contribution steps>` workflow,
-the following actions are useful:
-
-    * `new_children` to increment the versions and refresh outsourced files from templates
-    * `prepare_children_commit` to prepare the commit message files
-    * `commit_children` to commit changes to the local git repositories
-    * `push_children` to push the committed changes to the remote repositories
-    * `request_children_merge` to merge pushed changes to the main branches on the remote host
-    * `release_children` to bulk-release the project packages to PyPI
-
 to manipulate single files in project repositories use the actions
 `add_file`, `add_children_file`, `delete_file`, `delete_children_file`, `rename_file`, `rename_children_file`.
 
@@ -150,9 +140,9 @@ more flexible filtering can be done with the command line options `--filterExpre
 by specifying one of these options the selected/filtered children are then available as a children-set-expression
 with the same name as the specified option.
 
-for example to only show the versions of projects with uncommitted changes in the branch ``my_branch`` run::
+for example to only show the versions of projects with uncommitted changes in the branch ``branch_name`` run::
 
-    grm --filterBranch=my_branch show_children_versions "modified & filterBranch"
+    grm --filterBranch=branch_name show_children_versions "modified & filterBranch"
 
 .. note::
     the name of the branch get specified with the `--filterBranch` option. and the name of the option can then be
@@ -160,14 +150,14 @@ for example to only show the versions of projects with uncommitted changes in th
     action argument.
 
 in general, any bulk action can be restricted to only process children/portions projects that have the specified
-branch name checked-out. e.g. to only process all children that have checked out the branch ``my_branch`` run::
+branch name checked-out. e.g. to only process all children that have checked out the branch ``branch_name`` run::
 
-    grm --filterBranch=my_branch <any_bulk_action> filterBranch
+    grm --filterBranch=branch_name <any_bulk_action> filterBranch
 
 exactly the same selection result could be achieved via a more complex Python expression, using the
 `--filterExpression` option/children-set-expression::
 
-    grm --filterExpression="_git_current_branch(chi_pdv)=='my_branch'" <any_bulk_action> filterExpression
+    grm --filterExpression="_git_current_branch(chi_pdv)=='branch_name'" <any_bulk_action> filterExpression
 
 .. hint::
     the filter expression can contain project environment variables and any globals of the git-repo-manager tool.
@@ -181,9 +171,43 @@ the next example is selection all children with a package version number below o
     grm --filterExpression "package_version<='0.2'" <children_bulk_action> filterExpression
 
 the example underneath is showing the local, remote and PyPI versions of the children projects that have a branch
-(checked-out or not) with the name ``my_branch`` in their repository::
+(checked-out or not) with the name ``branch_name`` in their repository::
 
-    grm -F "'my_branch' in _git_branches(chi_pdv)" show_children_versions filterExpression
+    grm -F "'branch_name' in _git_branches(chi_pdv)" show_children_versions filterExpression
+
+to bulk-release multiple children projects in a :ref:`contribution process <contribution steps>` workflow,
+the following bulk actions are executed, e.g. from within the root folder of a namespace root project:
+
+    * `new_children` to increment the versions and refresh outsourced files from templates::
+
+        grm -b=branch_name new_children modified
+
+    * `prepare_children_commit` to prepare the commit message files (after you implemented
+      all changes into the above created branch with the name ``branch_name``)::
+
+        grm prepare_children_commit "commit message for branch_name" modified
+
+    * `commit_children` to commit changes to the local git repositories::
+
+        grm commit_children modified
+
+    * `push_children` to push the committed changes to the remote repositories::
+
+        grm --filterBranch=branch_name push_children filterBranch
+
+    * `request_children_merge` to merge pushed changes to the main branches on the remote host
+      (without a repository forg add the options: -f -u=group_or_user_name)::
+
+        grm --filterBranch=branch_name request_children_merge filterBranch
+
+    * `release_children` to bulk-release the project packages to PyPI::
+
+        grm --filterBranch=branch_name release_children filterBranch
+
+    * `install_children_editable`: updates/updates editable installations of your local projects into
+      your virtual environment::
+
+        grm -F "'branch_name' in _git_branches(chi_pdv)" install_children_editable filterExpression
 
 
 remote server authentication

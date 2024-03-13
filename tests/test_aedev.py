@@ -1,4 +1,4 @@
-# THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.tpl_project V0.3.26
+# THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.tpl_project V0.3.29
 # pylint: disable=invalid-name
 """ default integration and unit tests for new app/namespace-root/aedev-template/... projects.
 
@@ -17,7 +17,7 @@ main_module = importlib.import_module(main_imp_name)
 
 
 def test_version():
-    """ test existence of package version. """
+    """ test existence of project package version. """
     # noinspection PyUnresolvedReferences
     pkg_version = main_module.__version__
     assert pkg_version
@@ -27,7 +27,7 @@ def test_version():
 
 
 def test_docstring():
-    """ test existence of package docstring. """
+    """ test existence of project package docstring. """
     pkg_docstring = main_module.__doc__
     assert pkg_docstring
     assert isinstance(pkg_docstring, str)

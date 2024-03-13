@@ -1,4 +1,4 @@
-# THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.tpl_project V0.3.26
+# THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.tpl_project V0.3.29
 # RTD-build is failing if the Sphinx version is not specified/pinned (RTD was using 1.8.5 by default).
 sphinx==6.1.3
 # using package name sphinx_rtd_theme with underscores raises Sphinx Extension error:

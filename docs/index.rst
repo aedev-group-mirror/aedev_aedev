@@ -109,6 +109,7 @@ portion.
     aedev.git_repo_manager
     aedev.git_repo_manager.__main__
     aedev.setup_hook
+    aedev.pythonanywhere
 
 
 manuals and tutorials

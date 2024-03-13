@@ -1,4 +1,4 @@
-# THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.tpl_project V0.3.26
+# THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.tpl_project V0.3.29
 # noinspection GrazieInspection
 """
 configuration file for the Sphinx documentation builder
@@ -56,10 +56,10 @@ author = pev_str(root_pev, 'STK_AUTHOR')
 # copyright = str(datetime.datetime.now().year) + ", " + author
 docs_require = pev_val(root_pev, 'docs_require')
 project = pev_str(root_pev, 'project_desc')
+repo_name = pev_str(root_pev, 'project_name')
+version = pev_str(root_pev, 'project_version')
 repo_group = pev_str(root_pev, 'repo_group')
-repo_name = pev_str(root_pev, 'package_name')
 repo_root = pev_str(root_pev, 'repo_root')
-version = pev_str(root_pev, 'package_version')
 
 
 # -- general configuration --------------------------------------------------------------------------------------------

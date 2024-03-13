@@ -14,32 +14,26 @@ after the installation the ``grm`` command will be available in your OS console.
 usage of grm
 ============
 
-the git repository manager command line consist of options, action keywords and action arguments::
+``grm`` is supporting you on all devops (development operations) of your python library, application and web projects.
 
-    grm [options] [action-keywords] [action-arguments]
+this covers all actions done on your local machine, on your repository host servers (like gitlab.com or github.com)
+and on your web and applikcation deployment servers, like:
 
-most of the ``grm`` actions operate on a single project or repository and should be executed in the root folder of the
-project.
-
-some of them are also available as bulk actions, which are affecting multiple projects, e.g. the portions of
-a namespace, or the projects located under the same parent directory.
-
-bulk actions on portions of a namespace are processed by executing them in the namespace root project root folder.
-
-bulk actions on projects underneath a parent directory are executed in the parent folder.
-
-alternatively they can be executed from any other folder by specifying the namespace root project
-or the projects parent folder via the `--package` or `--path` options.
-
-for example, bulk actions on namespace root project, like e.g.
-`the ae namespace root project <https://gitlab.com/ae-group/ae_ae>`_ via ``--package ae_ae`` or the
-`the aedev namespace root project <https://gitlab.com/aedev-group/aedev_aedev>`_ via ``--path path/to/aedev_aedev``.
-
-.. hint:: bulk actions are recognizable by the additional ``children`` keyword in their action name.
+    * creating new projects
+    * maintaining and upgrading existing projects
+    * running integrity checks and unit tests
+    * maintaining, syncing and pushing of your git repositories
+    * creating and maintaining merge requests on your git repository servers
+    * release of your project onto the cheese shop (PyPI.com)
+    * deployment of your app/web project
 
 
 command line options and action arguments
 -----------------------------------------
+
+the git repository manager command line consist of options, action keywords and action arguments::
+
+    grm [options] [action-keywords] [action-arguments]
 
 all command line options are available in a long form, preceded with two leading hyphen characters, and in a short form,
 preceded with a single hyphen character.
@@ -49,18 +43,10 @@ command line options::
 
     grm --help
 
-general command line options like e.g. `--verbose` (`-v`), `--debug_level` (`-D`), `--path` (`-p`) or `--package` (`-k`)
+general command line options like e.g. `--verbose` (`-v`), `--debug_level` (`-D`), `--path` (`-p`) or `--project` (`-P`)
 can be specified for any action. other options, like e.g. the filter options `--filterBranch` (`-B`) and
 `--filterExpression` (`-F`), are only supported for bulk actions.
 
-the action keywords argument is composed of several words, seperated by either a space character, a hyphen character
-or an underscore character. some actions can even be abbreviated by a single word shortcut. e.g. the following three
-commandos are equivalent::
-
-    grm check integrity
-    grm check-integrity
-    grm check_integrity
-    grm check
 
 execute ``grm`` with the `show_actions` action to display a brief summary of all the available/registered actions
 for a project::
@@ -75,6 +61,37 @@ add the `--verbose` and/or :ref:`--debug_level <pre-defined-config-options>` com
 the equivalent command line using the short option form and the shortcut of `show_actions` looks like::
 
     grm -v -D 2 actions
+
+the action keywords argument is composed of several words, seperated by either a space character, a hyphen character
+or an underscore character. some actions can even be abbreviated by a single word shortcut. e.g. the following four
+commandos are equivalent::
+
+    grm check integrity
+    grm check-integrity
+    grm check_integrity
+    grm check
+
+bulk actions
+^^^^^^^^^^^^
+
+most of the ``grm`` actions operate on a single project or repository and should be executed in the root folder of the
+project working tree.
+
+some of them are also available as bulk actions, which are affecting multiple projects, e.g. the portions of
+a namespace, or the projects located under the same parent directory.
+
+bulk actions on portions of a namespace are processed by executing them in the namespace root project root folder.
+
+bulk actions on projects underneath a parent directory are executed in the parent folder.
+
+alternatively they can be executed from any other folder by specifying the namespace root project
+or the projects parent folder via the `--project` or `--path` options.
+
+for example, bulk actions on namespace root project, like e.g.
+`the ae namespace root project <https://gitlab.com/ae-group/ae_ae>`_ via ``--project ae_ae`` or the
+`the aedev namespace root project <https://gitlab.com/aedev-group/aedev_aedev>`_ via ``--path path/to/aedev_aedev``.
+
+.. hint:: bulk actions are recognizable by the additional ``children`` keyword in their action name.
 
 
 repository status actions
@@ -108,6 +125,18 @@ the `clean_releases` action deletes local+remote release tags and branches of th
 got not published to PYPI.
 
 the execution of bulk command lines for a group of projects can be done with the `run_children_command` action.
+
+
+web and app deployment server actions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+the actions `check_deploy` and `deploy_project` are working directly with the deployment servers of your web or app
+project.
+
+`check_deploy` is comparing the deployed files against any repository version tag or against the package files in your
+project work tree.
+
+the `deploy_project` action is deploying any new or changed package files to your deployment web or app server.
 
 
 filtering children of projects parent or portions of a namespace
@@ -166,9 +195,9 @@ exactly the same selection result could be achieved via a more complex Python ex
 
 .. note:: filter expressions should be included in high-commas.
 
-the next example is selection all children with a package version number below or equal to ``0.2``::
+the next example is selection all children with a project package version number below or equal to ``0.2``::
 
-    grm --filterExpression "package_version<='0.2'" <children_bulk_action> filterExpression
+    grm --filterExpression "project_version<='0.2'" <children_bulk_action> filterExpression
 
 the example underneath is showing the local, remote and PyPI versions of the children projects that have a branch
 (checked-out or not) with the name ``branch_name`` in their repository::
@@ -213,12 +242,70 @@ the following bulk actions are executed, e.g. from within the root folder of a n
 remote server authentication
 ----------------------------
 
-actions with write access to the remote repository server, like e.g. `push_project`, are requesting authentication via
-the :ref:`config-options` `gitToken` and `gitUser`.
+actions with write access to any remote host (web/repository server), like e.g. `deploy_project` or `push_project`, are
+requesting the user credentials for the authentication.
+
+
+config options
+^^^^^^^^^^^^^^
+
+user credentials can be specified via the ``grm`` command line :ref:`config-options`: `token` and `user` or `group`.
+
+
+config variables
+^^^^^^^^^^^^^^^^
+
+user credentials not specified by the command line :ref:`config-options` are determined from the
+:ref:`application config variable <config-variables>` via a user- and domain-specific lookup
+with the help of the :meth:`~ConsoleApp.get_variable` method.
+
+for example to resolve the value of the not specified `token` command line option, the lookup first checks if there
+exists an OS environment variable (also via the `python-dotenv <https://pypi.org/project/python-dotenv/>`__ package),
+and if not found then it is looking for an :ref:`application config variable <config-variables>`.
+
+in detail the lookup of a variable holding the `token` value of an user with the name ``michael``
+at the domain ``www.example.com`` is done in the following order:
+
+    * OS environment variable `AE_OPTIONS_HOST_TOKEN_AT_WWW_EXAMPLE_COM_MICHAEL`
+    * config variable `host_token_at_www_example_com_michael` in the config section `aeOptions`
+    * OS environment variable `AE_OPTIONS_HOST_TOKEN_AT_WWW_EXAMPLE_COM`
+    * config variable `host_token_at_www_example_com` in the config section `aeOptions`
+
+
+git credential storage
+^^^^^^^^^^^^^^^^^^^^^^
+
+the user credentials for actions on git repository hosts (gitlab/github/...) like `push_project` can alternatively
+be set and stored via the git configuration settings
+(see `https://git-scm.com/book/en/v2/Git-Tools-Credential-Storage`__
+and `https://stackoverflow.com/questions/46645843`__).
 
 .. hint::
-    see https://stackoverflow.com/questions/65163081 to disable user/password prompts for fetch and check actions
-    that don't need authentication (and not using `gitToken`), like e.g.
+    see `https://stackoverflow.com/questions/65163081`__ to disable user/password prompts for fetch and check actions
+    to git repository hoster that don't need authentication (and not using `token`), like e.g.
     :func:`~aedev.git_repo_manager.__main__._git_fetch`.
-    alternatively a function _get_repo_url() could be implemented to replace all usages of
-    pdv_str(..., 'repo_url') and 'origin'.
+
+
+typical development workflow
+----------------------------
+
+a typical workflow to create or change a project gets processed with the following ``grm`` actions:
+
+    * `fork` - create or update your fork (only for already existing porjects).
+    * `renew` - create a new project or prepare existing project to be changed.
+    * `prepare` - create a commit message.
+    * `commit` - create a new commit.
+    * `push` - push the commit to the origin repository (your fork).
+    * `request` - create a merge request.
+
+to complete the workflow, the release and deployment of a project has to be done by an repository maintainer with
+the following ``grm`` actions:
+    * `deploy` - deployment of the new/changed project (only available for web and app projects).
+    * `release` - merge the changes into the main branch ({MAIN_BRANCH}) and create a new project release at PyPI.
+
+
+more detailed workflow examples can be found in the `contribution documentation of a project
+<https://aedev.readthedocs.io/en/latest/index.html#using-the-git-repository-manager-grm>`__, and for web projects
+in the `programmer manual
+<https://kairos.readthedocs.io/en/latest/programmer_manual.html#update-from-version-vx-x-xx-to-vx-x-yy-on-pythonanywhere
+>`__ of the kairos web project.

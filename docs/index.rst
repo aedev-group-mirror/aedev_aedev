@@ -1,6 +1,6 @@
 
 ..
-    THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.tpl_namespace_root V0.3.13
+    THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.tpl_namespace_root V0.3.14
 
 namespace portions documentation
 ################################
@@ -59,7 +59,7 @@ follow the steps underneath to add and register a new module as portion onto the
 
 1. open a console window and change the current directory to the parent directory of your projects root folders.
 2. choose a not-existing/unique name for the new portion (referred as `<portion-name>` in the next steps).
-3. run ``grm --namespace=aedev --package=<portion_name> new-module`` to register the portion
+3. run ``grm --namespace=aedev --project=<portion_name> new-module`` to register the portion
    name within the namespace, to create a new project folder `aedev_<portion-name>` (providing
    initial project files created from templates) and to get a pre-configured git repository (with the remote
    already set and the initial files unstaged, to be extended, staged and finally committed).
@@ -109,6 +109,7 @@ portion.
     aedev.git_repo_manager
     aedev.git_repo_manager.__main__
     aedev.setup_hook
+    aedev.pythonanywhere
 
 
 manuals and tutorials

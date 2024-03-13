@@ -5,3 +5,4 @@ aedev_tpl_namespace_root
 aedev_tpl_app
 aedev_git_repo_manager
 aedev_setup_hook
+aedev_pythonanywhere

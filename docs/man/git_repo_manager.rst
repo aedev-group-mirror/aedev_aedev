@@ -6,7 +6,9 @@ installation of grm
 
 to installing this tool open a console window and run the following command::
 
-    pip install aedev_git_repo_manager
+    .. code-block:: shell
+
+        pip install aedev_git_repo_manager
 
 after the installation the ``grm`` command will be available in your OS console.
 
@@ -31,9 +33,12 @@ and on your web and applikcation deployment servers, like:
 command line options and action arguments
 -----------------------------------------
 
-the git repository manager command line consist of options, action keywords and action arguments::
+the git repository manager command line consist of options, action keywords, action arguments and optional
+action argument flags::
 
-    grm [options] [action-keywords] [action-arguments]
+    .. code-block:: shell
+
+        grm [options] [action-keywords] [action-arguments] [action-flags]
 
 all command line options are available in a long form, preceded with two leading hyphen characters, and in a short form,
 preceded with a single hyphen character.
@@ -41,35 +46,70 @@ preceded with a single hyphen character.
 executing ``grm`` with the `--help` command line option (short `-h`) displays a short summary of the available
 command line options::
 
-    grm --help
+    .. code-block:: shell
+
+        grm --help
 
 general command line options like e.g. `--verbose` (`-v`), `--debug_level` (`-D`), `--path` (`-p`) or `--project` (`-P`)
 can be specified for any action. other options, like e.g. the filter options `--filterBranch` (`-B`) and
 `--filterExpression` (`-F`), are only supported for bulk actions.
 
 
-execute ``grm`` with the `show_actions` action to display a brief summary of all the available/registered actions
-for a project::
+execute ``grm`` with the :func:`~aedev.git_repo_manager.__main__.show_actions` action to display a brief summary of all
+the available/registered actions for a project::
 
-    grm show_actions
+    .. code-block:: shell
 
-for a more verbose output, including the expected action-arguments, the supported project types and the action shortcut,
-add the `--verbose` and/or :ref:`--debug_level <pre-defined-config-options>` command line options::
+        grm show_actions
 
-    grm --verbose --debug_level=2 show_actions
+the ``action-keywords`` argument is composed of several words, seperated by either a space character, a hyphen character
+or an underscore character. some actions can even be abbreviated by a single word shortcut. therefore the following four
+commands are identical/equivalent::
 
-the equivalent command line using the short option form and the shortcut of `show_actions` looks like::
+    .. code-block:: shell
 
-    grm -v -D 2 actions
+        grm show_actions
+        grm show-actions
+        grm show actions
+        grm actions
 
-the action keywords argument is composed of several words, seperated by either a space character, a hyphen character
-or an underscore character. some actions can even be abbreviated by a single word shortcut. e.g. the following four
-commandos are equivalent::
+you can add the `--verbose` and/or :ref:`--debug_level <pre-defined-config-options>` command line options to get
+a more verbose output. e.g. to include for each listed action also their ``action-arguments`` and ``action-flags``,
+their supported project types and their action shortcut, simply add these options to command line of the
+:func:`~aedev.git_repo_manager.__main__.show_actions` action::
 
-    grm check integrity
-    grm check-integrity
-    grm check_integrity
-    grm check
+    .. code-block:: shell
+
+        grm --verbose --debug_level=2 show_actions
+
+the equivalent command line using the short option form (with only one leading hyphen character), and the shortcut of
+the :func:`~aedev.git_repo_manager.__main__.show_actions` action (which is
+:func:`actions <aedev.git_repo_manager.__main__.show_actions>`) would look like::
+
+    .. code-block:: shell
+
+        grm -v -D 2 actions
+
+some actions are expecting additional ``action-arguments``.
+
+e.g. to execute the
+:meth:`~aedev.git_repo_manager.__main__.GitlabCom.release_project` action the
+:paramref:`aedev.git_repo_manager.__main__.GitlabCom.release_project.version_tag` action argument has to specify
+the project version to release.
+
+for some actions you can optionally specify ``action-flags``. each flag has a default value, which will be used
+if the flag is not specified on the command line.
+
+the action :meth:`~aedev.git_repo_manager.__main__.PythonanywhereCom.check_deploy` e.g. is supporting the flag `CLEANUP`
+with a default value of ``False``. specifying this flag on the command line is switching the flag value to ``True``. the
+resulting flag value can also be specified on the command line by adding an equal character ('=') to the flag name,
+directly followed by the flag value. so the following two commands are identical::
+
+    .. code-block:: shell
+
+        grm check_deploy ... CLEANUP
+        grm check_deploy ... CLEANUP=True
+
 
 bulk actions
 ^^^^^^^^^^^^
@@ -97,46 +137,83 @@ for example, bulk actions on namespace root project, like e.g.
 repository status actions
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-several actions are determining the project(s) status, like e.g. `show_status`, `show_children_status`,
-`show_repo`, `show_children_repo`,
-`check_integrity`, `check_children_integrity`, `show_versions`, `show_children_versions`, and `search_repos`.
+several actions are determining the project(s) status, like e.g.
+:func:`~aedev.git_repo_manager.__main__.show_status`,
+:func:`~aedev.git_repo_manager.__main__.show_children_status`,
+:meth:`~aedev.git_repo_manager.__main__.GitlabCom.show_repo`,
+:meth:`~aedev.git_repo_manager.__main__.GitlabCom.show_children_repos`,
+:func:`~aedev.git_repo_manager.__main__.check_integrity`,
+:func:`~aedev.git_repo_manager.__main__.check_children_integrity`,
+:func:`~aedev.git_repo_manager.__main__.show_versions`,
+:func:`~aedev.git_repo_manager.__main__.show_children_versions`, and
+:meth:`~aedev.git_repo_manager.__main__.GitlabCom.search_repos`.
 
 
 project and repository maintenance actions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 useful actions to create, extend or renew a project repository respectively multiple project repositories, are e.g.
-`new_app`, `new_children`, `new_django`, `new_module`, `new_package`, `new_project`, `bump_version`,
-`refresh_outsourced`, `refresh_children_outsourced`.
+:func:`~aedev.git_repo_manager.__main__.new_app`,
+:func:`~aedev.git_repo_manager.__main__.new_children`,
+:func:`~aedev.git_repo_manager.__main__.new_django`,
+:func:`~aedev.git_repo_manager.__main__.new_module`,
+:func:`~aedev.git_repo_manager.__main__.new_namespace_root`,
+:func:`~aedev.git_repo_manager.__main__.new_package`,
+:func:`~aedev.git_repo_manager.__main__.new_project`,
+:func:`~aedev.git_repo_manager.__main__.bump_version`,
+:func:`~aedev.git_repo_manager.__main__.refresh_outsourced`,
+:func:`~aedev.git_repo_manager.__main__.refresh_children_outsourced`.
 
 actions for your other repository maintenance workflows are e.g.
-`clone_project`, `clone_children_project`, `fork_project`, `fork_children`,
-`prepare_commit`, `prepare_children_commit`, `commit_project`, `commit_children`,
-`push_project`, `push_children`, `request_merge`, `request_children_merge`, `release_project`, `release_children`,
-`install_editable`, and `install_children_editable`.
+:func:`~aedev.git_repo_manager.__main__.clone_project`,
+:func:`~aedev.git_repo_manager.__main__.clone_children_project`,
+:meth:`~aedev.git_repo_manager.__main__.GitlabCom.fork_project`,
+:meth:`~aedev.git_repo_manager.__main__.GitlabCom.fork_children`,
+:func:`~aedev.git_repo_manager.__main__.prepare_commit`,
+:func:`~aedev.git_repo_manager.__main__.prepare_children_commit`,
+:func:`~aedev.git_repo_manager.__main__.commit_project`,
+:func:`~aedev.git_repo_manager.__main__.commit_children`,
+:meth:`~aedev.git_repo_manager.__main__.GitlabCom.push_project`,
+:meth:`~aedev.git_repo_manager.__main__.GitlabCom.push_children`,
+:meth:`~aedev.git_repo_manager.__main__.GitlabCom.request_merge`,
+:meth:`~aedev.git_repo_manager.__main__.GitlabCom.request_children_merge`,
+:meth:`~aedev.git_repo_manager.__main__.GitlabCom.release_project`,
+:meth:`~aedev.git_repo_manager.__main__.GitlabCom.release_children`,
+:func:`~aedev.git_repo_manager.__main__.install_editable`, and
+:func:`~aedev.git_repo_manager.__main__.install_children_editable`.
 
 to manipulate single files in project repositories use the actions
-`add_file`, `add_children_file`, `delete_file`, `delete_children_file`, `rename_file`, `rename_children_file`.
+:func:`~aedev.git_repo_manager.__main__.add_file`,
+:func:`~aedev.git_repo_manager.__main__.add_children_file`,
+:func:`~aedev.git_repo_manager.__main__.delete_file`,
+:func:`~aedev.git_repo_manager.__main__.delete_children_file`,
+:func:`~aedev.git_repo_manager.__main__.rename_file`,
+:func:`~aedev.git_repo_manager.__main__.rename_children_file`.
 
 in order to synchronize the local :data:`~aedev.git_repo_manager.__main__.MAIN_BRANCH` branch with any changes
-done to same branch on the 'origin' remote, execute ``grm`` with the `update_project` and `update_children` actions.
+done to same branch on the 'origin' remote, execute ``grm`` with the
+:func:`~aedev.git_repo_manager.__main__.update_project` and
+:func:`~aedev.git_repo_manager.__main__.update_children` actions.
 
-the `clean_releases` action deletes local+remote release tags and branches of the specified project that
-got not published to PYPI.
+the :meth:`~aedev.git_repo_manager.__main__.GitlabCom.clean_releases` action deletes local+remote release tags and
+branches of the specified project that got not published to PYPI.
 
-the execution of bulk command lines for a group of projects can be done with the `run_children_command` action.
+the execution of bulk command lines for a group of projects can be done with the
+:func:`~aedev.git_repo_manager.__main__.run_children_command` action.
 
 
 web and app deployment server actions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-the actions `check_deploy` and `deploy_project` are working directly with the deployment servers of your web or app
-project.
+the actions :meth:`~aedev.git_repo_manager.__main__.PythonanywhereCom.check_deploy` and
+:meth:`~aedev.git_repo_manager.__main__.PythonanywhereCom.deploy_project` are working directly with the
+deployment servers of your web/Django or app project.
 
-`check_deploy` is comparing the deployed files against any repository version tag or against the package files in your
-project work tree.
+:meth:`~aedev.git_repo_manager.__main__.PythonanywhereCom.check_deploy` is comparing the deployed files against any
+repository version tag or against the package files in your project work tree.
 
-the `deploy_project` action is deploying any new or changed package files to your deployment web or app server.
+the :meth:`~aedev.git_repo_manager.__main__.PythonanywhereCom.deploy_project` action is deploying any new or
+changed package files to your web or app deployment server.
 
 
 filtering children of projects parent or portions of a namespace
@@ -156,12 +233,16 @@ set operators of python (`|` for union, `&` for intersection, `-` for difference
 for example to show the project versions of namespace portions with uncommitted changes, execute the following command
 in the root folder of the namespace root project::
 
-    grm show_children_versions modified
+    .. code-block:: shell
+
+        grm show_children_versions modified
 
 to additionally restrict the last example to projects with uncommitted changes in the
 :data:`~aedev.git_repo_manager.__main__.MAIN_BRANCH` run::
 
-    grm show_children_versions "modified & develop"
+    .. code-block:: shell
+
+        grm show_children_versions "modified & develop"
 
 .. note:: children-set-expression with set-operators have to be included into high-commas.
 
@@ -171,7 +252,9 @@ with the same name as the specified option.
 
 for example to only show the versions of projects with uncommitted changes in the branch ``branch_name`` run::
 
-    grm --filterBranch=branch_name show_children_versions "modified & filterBranch"
+    .. code-block:: shell
+
+        grm --filterBranch=branch_name show_children_versions "modified & filterBranch"
 
 .. note::
     the name of the branch get specified with the `--filterBranch` option. and the name of the option can then be
@@ -181,12 +264,16 @@ for example to only show the versions of projects with uncommitted changes in th
 in general, any bulk action can be restricted to only process children/portions projects that have the specified
 branch name checked-out. e.g. to only process all children that have checked out the branch ``branch_name`` run::
 
-    grm --filterBranch=branch_name <any_bulk_action> filterBranch
+    .. code-block:: shell
+
+        grm --filterBranch=branch_name <any_bulk_action> filterBranch
 
 exactly the same selection result could be achieved via a more complex Python expression, using the
 `--filterExpression` option/children-set-expression::
 
-    grm --filterExpression="_git_current_branch(chi_pdv)=='branch_name'" <any_bulk_action> filterExpression
+    .. code-block:: shell
+
+        grm --filterExpression="_git_current_branch(chi_pdv)=='branch_name'" <any_bulk_action> filterExpression
 
 .. hint::
     the filter expression can contain project environment variables and any globals of the git-repo-manager tool.
@@ -197,52 +284,74 @@ exactly the same selection result could be achieved via a more complex Python ex
 
 the next example is selection all children with a project package version number below or equal to ``0.2``::
 
-    grm --filterExpression "project_version<='0.2'" <children_bulk_action> filterExpression
+    .. code-block:: shell
+
+        grm --filterExpression "project_version<='0.2'" <children_bulk_action> filterExpression
 
 the example underneath is showing the local, remote and PyPI versions of the children projects that have a branch
 (checked-out or not) with the name ``branch_name`` in their repository::
 
-    grm -F "'branch_name' in _git_branches(chi_pdv)" show_children_versions filterExpression
+    .. code-block:: shell
+
+        grm -F "'branch_name' in _git_branches(chi_pdv)" show_children_versions filterExpression
 
 to bulk-release multiple children projects in a :ref:`contribution process <contribution steps>` workflow,
-the following bulk actions are executed, e.g. from within the root folder of a namespace root project:
+the following bulk actions can be executed, e.g. from within the root folder of a namespace root project:
 
-    * `new_children` to increment the versions and refresh outsourced files from templates::
+    * :func:`~aedev.git_repo_manager.__main__.new_children` to increment the versions and refresh outsourced
+      files from templates::
 
-        grm -b=branch_name new_children modified
+        .. code-block:: shell
 
-    * `prepare_children_commit` to prepare the commit message files (after you implemented
-      all changes into the above created branch with the name ``branch_name``)::
+            grm -b=branch_name new_children modified
 
-        grm prepare_children_commit "commit message for branch_name" modified
+    * :func:`~aedev.git_repo_manager.__main__.prepare_children_commit` to prepare the commit message files
+      (after you implemented all changes into the above created branch with the name ``branch_name``)::
 
-    * `commit_children` to commit changes to the local git repositories::
+        .. code-block:: shell
 
-        grm commit_children modified
+            grm prepare_children_commit "commit message for branch_name" modified
 
-    * `push_children` to push the committed changes to the remote repositories::
+    * :func:`~aedev.git_repo_manager.__main__.commit_children` to commit changes to the local git repositories::
 
-        grm --filterBranch=branch_name push_children filterBranch
+        .. code-block:: shell
 
-    * `request_children_merge` to merge pushed changes to the main branches on the remote host
-      (without a repository forg add the options: -f -u=group_or_user_name)::
+            grm commit_children modified
 
-        grm --filterBranch=branch_name request_children_merge filterBranch
+    * :meth:`~aedev.git_repo_manager.__main__.GitlabCom.push_children` to push the committed changes
+      to the remote repositories::
 
-    * `release_children` to bulk-release the project packages to PyPI::
+        .. code-block:: shell
 
-        grm --filterBranch=branch_name release_children filterBranch
+            grm --filterBranch=branch_name push_children filterBranch
 
-    * `install_children_editable`: updates/updates editable installations of your local projects into
-      your virtual environment::
+    * :meth:`~aedev.git_repo_manager.__main__.GitlabCom.request_children_merge` to merge pushed changes to the main
+      branches on the remote host (without a repository forg add the options: -f -u=group_or_user_name)::
 
-        grm -F "'branch_name' in _git_branches(chi_pdv)" install_children_editable filterExpression
+        .. code-block:: shell
+
+            grm --filterBranch=branch_name request_children_merge filterBranch
+
+    * :meth:`~aedev.git_repo_manager.__main__.GitlabCom.release_children` to bulk-release the project packages to PyPI::
+
+        .. code-block:: shell
+
+            grm --filterBranch=branch_name release_children filterBranch
+
+    * :func:`~aedev.git_repo_manager.__main__.install_children_editable`: updates/updates editable installations
+      of your local projects into your virtual environment::
+
+        .. code-block:: shell
+
+            grm -F "'branch_name' in _git_branches(chi_pdv)" install_children_editable filterExpression
 
 
 remote server authentication
 ----------------------------
 
-actions with write access to any remote host (web/repository server), like e.g. `deploy_project` or `push_project`, are
+actions with write access to any remote host (web/repository server), like e.g.
+:meth:`~aedev.git_repo_manager.__main__.PythonanywhereCom.deploy_project` or
+:meth:`~aedev.git_repo_manager.__main__.GitlabCom.push_project`, are
 requesting the user credentials for the authentication.
 
 
@@ -275,14 +384,15 @@ at the domain ``www.example.com`` is done in the following order:
 git credential storage
 ^^^^^^^^^^^^^^^^^^^^^^
 
-the user credentials for actions on git repository hosts (gitlab/github/...) like `push_project` can alternatively
+the user credentials for actions on git repository hosts (gitlab/github/...) like
+:meth:`~aedev.git_repo_manager.__main__.GitlabCom.push_project` can alternatively
 be set and stored via the git configuration settings
 (see `https://git-scm.com/book/en/v2/Git-Tools-Credential-Storage`__
 and `https://stackoverflow.com/questions/46645843`__).
 
 .. hint::
     see `https://stackoverflow.com/questions/65163081`__ to disable user/password prompts for fetch and check actions
-    to git repository hoster that don't need authentication (and not using `token`), like e.g.
+    to git repository hoster that don't need authentication (and not using the `token` option), like e.g.
     :func:`~aedev.git_repo_manager.__main__._git_fetch`.
 
 
@@ -291,17 +401,25 @@ typical development workflow
 
 a typical workflow to create or change a project gets processed with the following ``grm`` actions:
 
-    * `fork` - create or update your fork (only for already existing porjects).
-    * `renew` - create a new project or prepare existing project to be changed.
-    * `prepare` - create a commit message.
-    * `commit` - create a new commit.
-    * `push` - push the commit to the origin repository (your fork).
-    * `request` - create a merge request.
+    * :meth:`fork <aedev.git_repo_manager.__main__.GitlabCom.fork_project>`
+      - create or update your fork (only for already existing porjects).
+    * :func:`renew <aedev.git_repo_manager.__main__.new_project>`
+      - create a new project or prepare existing project to be changed.
+    * :func:`prepare <aedev.git_repo_manager.__main__.prepare_commit>`
+      - create a commit message.
+    * :func:`commit <aedev.git_repo_manager.__main__.commit_project>`
+      - create a new commit.
+    * :meth:`push <aedev.git_repo_manager.__main__.GitlabCom.push_project>`
+      - push the commit to the origin repository (your fork).
+    * :meth:`request <aedev.git_repo_manager.__main__.GitlabCom.request_merge>`
+      - create a merge request.
 
 to complete the workflow, the release and deployment of a project has to be done by an repository maintainer with
 the following ``grm`` actions:
-    * `deploy` - deployment of the new/changed project (only available for web and app projects).
-    * `release` - merge the changes into the main branch ({MAIN_BRANCH}) and create a new project release at PyPI.
+    * :meth:`release <aedev.git_repo_manager.__main__.GitlabCom.release_project>`
+      - merge the changes into the main branch ({MAIN_BRANCH}) and create a new project release at PyPI.
+    * :meth:`deploy <aedev.git_repo_manager.__main__.PythonanywhereCom.deploy_project>`
+      - deployment of the new/changed project (only available for web and app projects).
 
 
 more detailed workflow examples can be found in the `contribution documentation of a project

@@ -1,7 +1,7 @@
 <!-- THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.tpl_namespace_root V0.3.14 -->
 # __aedev__ namespace-root project
 
-aedev_aedev namespace-root 0.3.20
+aedev_aedev namespace-root 0.3.21
 
 
 ## aedev namespace root package use-cases

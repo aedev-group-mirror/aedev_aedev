@@ -372,13 +372,13 @@ for example to resolve the value of the not specified `token` command line optio
 exists an OS environment variable (also via the `python-dotenv <https://pypi.org/project/python-dotenv/>`__ package),
 and if not found then it is looking for an :ref:`application config variable <config-variables>`.
 
-in detail the lookup of a variable holding the `token` value of an user with the name ``michael``
-at the domain ``www.example.com`` is done in the following order:
+for example the lookup of the value of the `token` option, for an user with the name ``michael``
+at the domain ``www.example.com``, is done in the following order:
 
-    * OS environment variable `AE_OPTIONS_HOST_TOKEN_AT_WWW_EXAMPLE_COM_MICHAEL`
-    * config variable `host_token_at_www_example_com_michael` in the config section `aeOptions`
-    * OS environment variable `AE_OPTIONS_HOST_TOKEN_AT_WWW_EXAMPLE_COM`
-    * config variable `host_token_at_www_example_com` in the config section `aeOptions`
+    * OS environment variable ``AE_OPTIONS_HOST_TOKEN_AT_WWW_EXAMPLE_COM_MICHAEL``
+    * config variable ``host_token_at_www_example_com_michael`` in the config section ``aeOptions``
+    * OS environment variable ``AE_OPTIONS_HOST_TOKEN_AT_WWW_EXAMPLE_COM``
+    * config variable ``host_token_at_www_example_com`` in the config section ``aeOptions``
 
 
 git credential storage
@@ -416,6 +416,7 @@ a typical workflow to create or change a project gets processed with the followi
 
 to complete the workflow, the release and deployment of a project has to be done by an repository maintainer with
 the following ``grm`` actions:
+
     * :meth:`release <aedev.git_repo_manager.__main__.GitlabCom.release_project>`
       - merge the changes into the main branch ({MAIN_BRANCH}) and create a new project release at PyPI.
     * :meth:`deploy <aedev.git_repo_manager.__main__.PythonanywhereCom.deploy_project>`

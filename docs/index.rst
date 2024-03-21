@@ -108,8 +108,8 @@ portion.
     aedev.tpl_app
     aedev.git_repo_manager
     aedev.git_repo_manager.__main__
-    aedev.setup_hook
     aedev.pythonanywhere
+    aedev.setup_hook
 
 
 manuals and tutorials

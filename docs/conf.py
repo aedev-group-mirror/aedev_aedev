@@ -1,5 +1,4 @@
-# THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.tpl_project V0.3.30
-# noinspection GrazieInspection
+# THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.tpl_project V0.3.32
 """
 configuration file for the Sphinx documentation builder
 =======================================================
@@ -153,7 +152,7 @@ elif html_theme == 'sphinx_rtd_theme':
     html_theme_path = ["_themes", ]
     # see https://sphinx-rtd-theme.readthedocs.io/en/latest/configuring.html
     html_theme_options = dict(
-        display_version=True,
+        # display_version=True,   # this setting is no longer supported by this theme
         # gitlab_url=f"https://gitlab.com/aedev-group/aedev_aedev/docs/index.rst",
         navigation_depth=-1,
         prev_next_buttons_location='both',

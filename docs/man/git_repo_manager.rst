@@ -19,7 +19,7 @@ usage of grm
 ``grm`` is supporting you on all devops (development operations) of your python library, application and web projects.
 
 this covers all actions done on your local machine, on your repository host servers (like ``gitlab.com``
-or ``github.com``) and on your web and applikcation deployment servers, like:
+or ``github.com``) and on your web and application deployment servers, like:
 
     * creating new projects
     * maintaining and upgrading existing projects
@@ -62,7 +62,7 @@ the available/registered actions for a project::
 
         grm show_actions
 
-the ``action-keywords`` argument is composed of several words, seperated by either a space character, a hyphen character
+the ``action-keywords`` argument is composed of several words, separated by either a space character, a hyphen character
 or an underscore character. some actions can even be abbreviated by a single word shortcut. therefore the following four
 commands are identical/equivalent::
 
@@ -363,28 +363,35 @@ requesting the user credentials for the authentication from the remote server co
     configuration options specified to ``grm`` via command line arguments have the highest priority, followed
     by OS environment variables, :ref:`grm config variables`, and the :ref:`remote server configuration` files.
 
+OS environment variables are mostly used to store credential secrets like authentication tokens, and can get
+declared in various ways. default values for these variables can get specified in ``.env`` files (see
+:func:`~ae.base.load_env_var_defaults`). these defaults getting overwritten by the OS environment variable values
+declared via a startup shell script (like e.g. ``.bashrc``), and these getting overwritten by variable values
+set directly in an open console/shell.
+
 
 command line config options
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 the remote server domain address can be specified via command line config-option `domain`.
 
-user credentials can be specified via the ``grm`` command line :ref:`config options`: `token` and `user` or `group`.
+user credentials can be specified via the ``grm`` command line :ref:`config-options`: `token` and `user` or `group`.
 
 
 grm config variables
 ^^^^^^^^^^^^^^^^^^^^
 
-user credentials not specified by the command line :ref:`config options` are determined from the
+user credentials not specified by the command line :ref:`config-options` are determined from the
 :ref:`application config variable <config-variables>` via a user- and domain-specific lookup
 with the help of the :meth:`~ae.console.ConsoleApp.get_variable` method.
 
-for example to resolve the value of the not specified `token` command line option, the lookup first checks if there
-exists an OS environment variable (also via the `python-dotenv <https://pypi.org/project/python-dotenv/>`__ package),
-and if not found then it is looking for an :ref:`application config variable <config-variables>`.
+to resolve the value of the not specified `token` command line option, the lookup first checks if there
+exists an OS environment variable and if not found then it is looking for an
+:ref:`application config variable <config-variables>`.
 
-the lookup of the value of the `token` option, for an user with the name ``michael``
-at the domain ``www.example.com``, is done in the following order:
+for example the lookup of the default value of the not specified `token` command line option,
+for an user with the name ``michael`` at the domain ``www.example.com``, is done in the
+following order:
 
     * OS environment variable ``AE_OPTIONS_HOST_TOKEN_AT_WWW_EXAMPLE_COM_MICHAEL``
     * config variable ``host_token_at_www_example_com_michael`` in the config section ``aeOptions``
@@ -434,7 +441,7 @@ be set and stored via the git configuration settings
 and `<https://stackoverflow.com/questions/46645843>`__).
 
 .. hint::
-    see `https://stackoverflow.com/questions/65163081`__ to disable user/password prompts for fetch and check actions
+    see `<https://stackoverflow.com/questions/65163081>`__ to disable user/password prompts for fetch and check actions
     to git repository hoster that don't need authentication (and not using the `token` option), like e.g.
     :func:`~aedev.git_repo_manager.__main__._git_fetch`.
 
@@ -452,19 +459,20 @@ to create a new project (in this example a small console app module with the pro
 first create a folder with the name of the new project directly underneath of your
 projects source parent folder (e.g. ``~/src``).
 
-then, within the new project root folder create the file ``pev.defaults`` (or ``pev.updated``, like explained
-in the section :ref:`project development variables`), in order to specify
-your user name, your credentials, or the repository owner at your repository host server.
+then, within the new project root folder create the file ``pev.defaults`` (or ``pev.updated``), like explained
+in the section :ref:`project development variables`, in order to specify
+your user name (in `STK_AUTHOR`), and the repository owner at your repository host server (in `REPO_GROUP`).
 
 .. hint::
-    the section :ref:`remote server configuration` describes how you can configure default values of your
-    repository server, your user account name and credentials, if you not want to specify them
-    in every run of ``grm`` via the command line options.
+    the section :ref:`remote server configuration` describes alternative ways on how you can configure
+    default values of your repository server, your user account name and your credentials/tokens,
+    if you not want to specify them in every run of ``grm`` via the command line options.
 
-optionally create and activate a virtual environment for the new project, like e.g. ``aedev39`` with
-the tool `pyenv <https://github.com/pyenv/pyenv>`__::
+optionally create and activate a virtual environment for the new project. the following command is
+using the tool `pyenv <https://github.com/pyenv/pyenv>`__ to set an existing virtual environment (``py_env``)
+as the default for the new project (stored within the ``.python-version`` in the project root folder).
 
-    pyenv local aedev39
+    pyenv local py_env
 
 .. hint::
     using ``pyenv local`` has the advantage to ensure that the project's virtual environment gets activated
@@ -477,15 +485,15 @@ make sure you have installed the ``grm`` tool, by running the following command 
 now you can run the ``grm`` tool for the first time in order to create the initial git repository,
 and some basic files for the specified project type (e.g. a module project)::
 
-    grm new_module
+    grm new module
 
-the grm action ``new_module`` specifies the type of the project as a single module.
-for a more complex project (including multiple modules) use instead the ``new_package`` action,
-for a namespace root project the ``new_namespace_root`` action,
-for a GUI application the ``new_app`` action,
-and for a django project the ``new_django`` action.
+the grm action ``new module`` specifies the type of the project as a single module.
+for a more complex project (including multiple modules) use instead the ``new package`` action,
+for a namespace root project the ``new namespace root`` action,
+for a GUI application the ``new app`` action,
+and for a django project the ``new django`` action.
 
-.. hint:: for a console app, in controary to a GUI app, use either the ``new_module`` or ``new_package`` actions.
+.. hint:: for a console app, in contrary to a GUI app, use either the ``new module`` or ``new package`` actions.
 
 now you can start completing the unit and integration tests code by editing the prepared file ``tests/test_senv.py``.
 then the project code can be amended in the generated file ``senv.py``.
@@ -511,7 +519,7 @@ folder with the :func:`prepare <aedev.git_repo_manager.__main__.prepare_commit>`
 
     grm prepare
 
-the content of the commit message file can then be ammended with additional notes.
+the content of the commit message file can then be amended with additional notes.
 
 to commit the first implementation of your new project into your local git repository, execute the
 :func:`commit <aedev.git_repo_manager.__main__.commit_project>` action::
@@ -532,7 +540,7 @@ a typical workflow to change or add code of an already existing project gets pro
 the following ``grm`` actions:
 
     * :meth:`fork <aedev.git_repo_manager.__main__.GitlabCom.fork_project>`
-      - create or update your fork (only for already existing porjects).
+      - create or update your fork (only for already existing projects).
     * :func:`renew <aedev.git_repo_manager.__main__.new_project>`
       - update/refresh/renew the files created from templates.
     * :func:`prepare <aedev.git_repo_manager.__main__.prepare_commit>`
@@ -557,26 +565,26 @@ setup a new Django CMS server project
 -------------------------------------
 
 the following example describes all the steps that need to be done in the bash console on your computer,
-in order to create a new Django project (using Django 4.2 and DjangoCms 4.1), with the project name ``oaios``.
+in order to create a new Django project (using Django 4.2 and DjangoCms 4.1), with the project name ``oaio_server``.
 
 after changing your current working directory to the projects source parent folder (e.g. <username>/src), execute the
-following commands to create the project root folder ``oaios``,
+following commands to create the project root folder ``oaio_server``,
 and setup a new virtual environment with the name ``dj4``::
 
-    pyenv install 3.12.0
-    pyenv virtualenv 3.12.0 dj4
-    mkdir oaios
-    cd oaios
+    pyenv install 3.12.3                    (released on 9 april 2024)
+    pyenv virtualenv 3.12.3 dj4
+    mkdir oaio_server
+    cd oaio_server
     pyenv local dj4
     pip install --upgrade pip setuptools aedev-git-repo-manager
 
 now, still from within the project root folder and with the new virtual environment activated, you can
-install Django 4.2 and DjangoCms 4.1 and prepare an initial project structure by executing the following commands.
+install Django and DjangoCms and prepare an initial project structure by executing the following commands.
 the ``djangocms`` command will prompt you to enter the name, email address and password of the django admin/superuser::
 
-    pip install Django==4.2
-    pip install django-cms (4.1.1 released on 1st of may 2024)
-    djangocms oaios .
+    pip install Django==4.2.13              (released on 7 may 2024, 4.2.16 on 12 oct 2024)
+    pip install django-cms==4.1.1           (released on 1 may 2024, 4.1.3 on 12 oct 2024)
+    djangocms oaio_server .
 
 .. note::
     don’t miss the final dot in the ``djangocms`` command.
@@ -599,25 +607,42 @@ template files provided by the projects in the
     you could create them as new text files, containing the string content of the ``grm``
     :data:`~aedev.git_repo_manager.__main__.OUTSOURCED_MARKER` in its first line.
 
-now edit the empty project file ``oaios/__init__.py``, created by the ``djangocms``command
-and add inthere the following content::
+now edit the empty project file ``oaio_server/__init__.py``, created by the ``djangocms`` command
+and add in there the following content::
 
-    """ Our All In One Server
+    """ oaio_server project title
     """
     __version__ = '0.3.0'
 
-then adapt the :ref:`project development variables` specified in the file ``pev.defaults`` to your web project::
+the next to adapt to your web project are the values of the :ref:`project development variables`,
+which are stored in the project root folder in the file ``pev.defaults``.
+a typical file content could look like::
 
     {
-        'STK_AUTHOR': 'your-repo-host-account-user-name',
-        'REPO_GROUP': 'your-repo-host-owner-user-or-group',     # e.g. 'oaios-group'
-        'web_domain': 'your-web-app-host-domain',               # e.g. 'www.pythonanywhere.com'
-        'web_user':   'your-web-app-host-user-name',
+        'STK_AUTHOR':       'repo-group-account-name',
+        'STK_AUTHOR_EMAIL': 'project-group-email-address',
+        'REPO_GROUP':       'repo-host-owner-user-or-group-id',  # e.g. 'aedev-group'
+        'pip_name':         'pip-project-package-name-on-PyPI',  # e.g. 'aedev-git-repo-manager'
+        'web_domain':       'web-app-host-domain',               # e.g. 'eu.pythonanywhere.com'
+        'web_user':         'web-app-host-user-name',
     }
 
 .. hint::
     to prevent the release of your web project onto the PyPI cheese shop, set the value of the
-    `pip_name` key to an empty string.
+    `pip_name` variable to an empty string.
+
+by creating in the project root folder another file with the name ``pev.updates`` with the
+following content, you don't need to specify your user name and email address, request by
+some of the ``grm`` commands/actions::
+
+    {
+        'STK_AUTHOR': 'repo-group-account-name',
+        'STK_AUTHOR_EMAIL': 'project-default-email-address',
+    }
+
+.. note::
+    secret user credentials, like passwords and tokens should never be stored as
+    project development variables. use instead the :ref:`remote server configuration`.
 
 finally, in order to:
 
@@ -633,15 +658,13 @@ run the following ``grm`` actions/commands::
     grm -f -i 0 -b init_project renew
     grm prepare
     grm commit
-    grm -f push
-    grm -f -u ae-group request
+    grm push
+    grm request
     grm release LATEST
 
 .. hint::
-    the force/-f command option has to be specified in this example for the ``renew`` and ``push`` actions,
-    in order to use the version 0.3.0 (copied from ``kairos``, instead of an initial version 0.0.1),
-    and for the ``request`` action in order to create the merge/push request directly in the
-    name of the ``ae-group`` maintainer(s).
+    the force/-f command line option has to be specified in this example for the ``renew`` actions,
+    in order to use the version 0.3.0 (copied from ``kairos``, instead of an initial version 0.0.1).
 
 
 additional information to setup Django/CMS
@@ -659,9 +682,9 @@ additional information to setup Django/CMS
 more grm example workflows
 --------------------------
 
-more detailed workflow examples for``aedev`` namespace portion projects can be found in the
+``grm`` workflow examples for ``aedev`` namespace portion projects can be found in the
 `contribution documentation of a project
 <https://aedev.readthedocs.io/en/latest/index.html#using-the-git-repository-manager-grm>`__,
 and for web projects in the `programmer manual
-<https://kairos.readthedocs.io/en/latest/programmer_manual.html#update-from-version-vx-x-xx-to-vx-x-yy-on-pythonanywhere
->`__ of the ``kairos`` web project.
+<https://kairos.readthedocs.io/en/latest/programmer_manual.html#using-the-git-repository-manager-grm>`__
+of the ``kairos`` web project.

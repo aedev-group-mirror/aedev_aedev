@@ -94,7 +94,7 @@ some actions are expecting additional ``action-arguments``.
 
 e.g. to execute the
 :meth:`~aedev.git_repo_manager.__main__.GitlabCom.release_project` action the
-:paramref:`aedev.git_repo_manager.__main__.GitlabCom.release_project.version_tag` action argument has to specify
+:paramref:`~aedev.git_repo_manager.__main__.GitlabCom.release_project.version_tag` action argument has to specify
 the project version to release.
 
 for some actions you can optionally specify ``action-flags``. each flag has a default value, which will be used

@@ -1,6 +1,6 @@
 
 ..
-    THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.tpl_namespace_root V0.3.14
+    THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.namespace_root_tpls v0.3.18
 
 namespace portions documentation
 ################################
@@ -73,8 +73,8 @@ follow the steps underneath to add and register a new module as portion onto the
 8. run ``grm check-integrity`` to run the linting and unit tests (if they fail go one or two steps back).
 9. run ``grm prepare``, then amend the commit message within the file `.commit_msg.txt`,
    then run ``grm commit`` and ``grm push`` to commit and upload your new portion to your personal
-   remote/server repository fork, and finally run ``grm request`` to request the merge/pull into
-   the forked/upstream repository in the users group `aedev-group` (at https://gitlab.com/aedev-group).
+   forked repository onto the origin remote server, and finally run ``grm request`` to request the merge/pull into
+   the fork/upstream repository of the user/group `aedev-group` (at https://gitlab.com/aedev-group).
 
 the registration of a new portion to the aedev namespace has to be done by a namespace maintainer.
 
@@ -110,6 +110,11 @@ portion.
     aedev.git_repo_manager.__main__
     aedev.pythonanywhere
     aedev.setup_hook
+    aedev.project_tpls
+    aedev.app_tpls
+    aedev.namespace_root_tpls
+    aedev.project_manager
+    aedev.project_manager.__main__
 
 
 manuals and tutorials

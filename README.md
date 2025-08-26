@@ -1,7 +1,7 @@
-<!-- THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.tpl_namespace_root V0.3.14 -->
+<!-- THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.namespace_root_tpls v0.3.18 -->
 # __aedev__ namespace-root project
 
-aedev_aedev namespace-root 0.3.25
+aedev namespace-root: aedev namespace root, providing setup, development and documentation tools/templates for Python projects.
 
 
 ## aedev namespace root package use-cases
@@ -42,7 +42,7 @@ to contribute to this root package. in this case please follow the instructions 
 
 ## namespace portions
 
-the following 7 portions are currently included in this namespace:
+the following 11 portions are currently included in this namespace:
 
 * [aedev_setup_project](https://pypi.org/project/aedev_setup_project "aedev namespace portion aedev_setup_project")
 * [aedev_tpl_project](https://pypi.org/project/aedev_tpl_project "aedev namespace portion aedev_tpl_project")
@@ -51,3 +51,7 @@ the following 7 portions are currently included in this namespace:
 * [aedev_git_repo_manager](https://pypi.org/project/aedev_git_repo_manager "aedev namespace portion aedev_git_repo_manager")
 * [aedev_pythonanywhere](https://pypi.org/project/aedev_pythonanywhere "aedev namespace portion aedev_pythonanywhere")
 * [aedev_setup_hook](https://pypi.org/project/aedev_setup_hook "aedev namespace portion aedev_setup_hook")
+* [aedev_project_tpls](https://pypi.org/project/aedev_project_tpls "aedev namespace portion aedev_project_tpls")
+* [aedev_app_tpls](https://pypi.org/project/aedev_app_tpls "aedev namespace portion aedev_app_tpls")
+* [aedev_namespace_root_tpls](https://pypi.org/project/aedev_namespace_root_tpls "aedev namespace portion aedev_namespace_root_tpls")
+* [aedev_project_manager](https://pypi.org/project/aedev_project_manager "aedev namespace portion aedev_project_manager")

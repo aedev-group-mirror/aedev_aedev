@@ -646,25 +646,24 @@ some of the ``grm`` commands/actions::
 
 finally, in order to:
 
-    #. complete the project files from the templates,
+    #. fork the kairos repository
+    #. update/refresh the project files from the templates,
     #. prepare the commit message,
     #. commit to git repository,
     #. push the commit to Gitlab,
     #. create a merge request and
     #. release to PyPI and reset the local project (repository) to the main branch::
 
-run the following ``grm`` actions/commands::
+run the following ``pjm`` actions/commands::
 
-    grm -f -i 0 -b init_project renew
-    grm prepare
-    grm commit
-    grm push
-    grm request
-    grm release LATEST
-
-.. hint::
-    the force/-f command line option has to be specified in this example for the ``renew`` actions,
-    in order to use the version 0.3.0 (copied from ``kairos``, instead of an initial version 0.0.1).
+    pjm fork ae-group/kairos
+    pjm -b feature_or_bug_fix_branch_name renew
+    # use your favorite IDE/editor to add/change code
+    pjm prepare
+    pjm commit
+    pjm push
+    pjm request
+    pjm release LATEST
 
 
 additional information to setup Django/CMS

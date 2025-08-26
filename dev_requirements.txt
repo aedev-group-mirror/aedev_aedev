@@ -1,4 +1,4 @@
-# no OUTSOURCED_MARKER to not wipe/overwrite the registered aedev namespace portions
+# no OUTSOURCED_MARKER to not wipe/overwrite the registered aedev namespace portions ?!?!? remove old portions after migration to pjm is finished
 aedev_setup_project
 aedev_tpl_project
 aedev_tpl_namespace_root
@@ -6,3 +6,7 @@ aedev_tpl_app
 aedev_git_repo_manager
 aedev_pythonanywhere
 aedev_setup_hook
+aedev_project_tpls
+aedev_app_tpls
+aedev_namespace_root_tpls
+aedev_project_manager

@@ -1,4 +1,4 @@
-# THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.tpl_project V0.3.32
+# THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.project_tpls v0.3.49
 """
 configuration file for the Sphinx documentation builder
 =======================================================
@@ -42,7 +42,7 @@ import sys
 
 from typing import Any, Dict
 
-from aedev.setup_project import pev_str, pev_val, project_env_vars      # type: ignore
+from ae.dev_ops import ProjectDevVars                       # type: ignore
 
 # add project root path, above of this file (conf.py) and the docs folder, to sys.path
 project_path = os.path.dirname(os.path.dirname(__file__))
@@ -50,15 +50,15 @@ sys.path.insert(0, project_path)
 
 
 # -- project information ----------------------------------------------------------------------------------------------
-root_pev = project_env_vars(project_path=project_path)
-author = pev_str(root_pev, 'STK_AUTHOR')
+root_pdv = ProjectDevVars(project_path=project_path)
+author = root_pdv['STK_AUTHOR']
 # copyright = str(datetime.datetime.now().year) + ", " + author
-docs_require = pev_val(root_pev, 'docs_require')
-project = pev_str(root_pev, 'project_desc')
-repo_name = pev_str(root_pev, 'project_name')
-version = pev_str(root_pev, 'project_version')
-repo_group = pev_str(root_pev, 'repo_group')
-repo_root = pev_str(root_pev, 'repo_root')
+docs_requires = root_pdv.pdv_val('docs_requires')
+project = root_pdv['project_desc']
+repo_name = root_pdv['project_name']
+version = root_pdv['project_version']
+repo_group = root_pdv['repo_group']
+repo_root = root_pdv['repo_root']
 
 
 # -- general configuration --------------------------------------------------------------------------------------------
@@ -81,7 +81,7 @@ extensions = [
     'sphinx_rtd_theme',
 ]
 # --- add the extensions that get installed via pip
-extensions.extend(_ for _ in docs_require if _.startswith("sphinx_"))   # remove Sphinx from other sphinx extensions
+extensions.extend(_ for _ in docs_requires if _.startswith("sphinx_"))   # remove Sphinx from other sphinx extensions
 
 # -- autodoc config
 # None==enabled (True failing on RTD builds - replaced with None) - see https://github.com/sphinx-doc/sphinx/issues/5459

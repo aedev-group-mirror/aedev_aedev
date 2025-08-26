@@ -1,4 +1,4 @@
-# THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.tpl_project V0.3.32
+# THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.project_tpls v0.3.49
 # RTD-build was failing if the Sphinx version (6.1.3++) was not specified/pinned (RTD was using 1.8.5 by default).
 # .. which seems to be fixed newer Sphinx version (tested with 7.2.6)
 sphinx
@@ -8,5 +8,5 @@ sphinx-rtd-theme
 sphinx_autodoc_typehints
 sphinx_paramlinks
 -r ../dev_requirements.txt
-# docs/conf.py is importing aedev.setup_project
-aedev_setup_project
+# docs/conf.py is importing ae.dev_ops
+ae_dev_ops

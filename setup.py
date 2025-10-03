@@ -1,4 +1,4 @@
-# THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.project_tpls v0.3.49
+# THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.project_tpls v0.3.58
 """ setup of aedev namespace-root: aedev namespace root, providing setup, development and documentation tools/templates for Python projects.. """
 # noinspection PyUnresolvedReferences
 import sys
@@ -15,19 +15,18 @@ setup_kwargs = {
         'Programming Language :: Python :: 3.9', 'Topic :: Software Development', 'Typing :: Typed'],
     'description': ('aedev namespace-root: aedev namespace root, providing setup, development and documentation tools/templates for '
  'Python projects.'),
-    'extras_require': {       'dev': [       'aedev_setup_project', 'aedev_tpl_project', 'aedev_tpl_namespace_root', 'aedev_tpl_app',
-                       'aedev_git_repo_manager', 'aedev_pythonanywhere', 'aedev_setup_hook', 'aedev_project_tpls',
-                       'aedev_app_tpls', 'aedev_namespace_root_tpls', 'aedev_project_manager', 'sphinx',
-                       'sphinx-rtd-theme', 'sphinx_autodoc_typehints', 'sphinx_paramlinks', 'ae_dev_ops', 'anybadge',
-                       'coverage-badge', 'aedev_git_repo_manager', 'flake8', 'mypy', 'pylint', 'pytest', 'pytest-cov',
-                       'pytest-django', 'typing', 'types-setuptools', 'wheel', 'twine'],
+    'extras_require': {       'dev': [       'aedev_app_tpls', 'aedev_namespace_root_tpls', 'aedev_project_tpls', 'aedev_aedev',
+                       'aedev_project_manager', 'sphinx', 'sphinx-rtd-theme', 'sphinx_autodoc_typehints',
+                       'sphinx_paramlinks', 'ae_dev_ops', 'anybadge', 'coverage-badge', 'aedev_project_manager',
+                       'flake8', 'mypy', 'pylint', 'pytest', 'pytest-cov', 'pytest-django', 'typing',
+                       'types-setuptools'],
         'docs': ['sphinx', 'sphinx-rtd-theme', 'sphinx_autodoc_typehints', 'sphinx_paramlinks', 'ae_dev_ops'],
-        'tests': [       'anybadge', 'coverage-badge', 'aedev_git_repo_manager', 'flake8', 'mypy', 'pylint', 'pytest',
-                         'pytest-cov', 'pytest-django', 'typing', 'types-setuptools', 'wheel', 'twine']},
+        'tests': [       'anybadge', 'coverage-badge', 'aedev_project_manager', 'flake8', 'mypy', 'pylint', 'pytest',
+                         'pytest-cov', 'pytest-django', 'typing', 'types-setuptools']},
     'install_requires': [],
     'keywords': ['configuration', 'development', 'environment', 'productivity'],
     'license': 'GPL-3.0-or-later',
-    'long_description': ('<!-- THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.namespace_root_tpls v0.3.18 -->\n'
+    'long_description': ('<!-- THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.namespace_root_tpls v0.3.21 -->\n'
  '# __aedev__ namespace-root project\n'
  '\n'
  'aedev namespace-root: aedev namespace root, providing setup, development and documentation tools/templates for '
@@ -72,22 +71,12 @@ setup_kwargs = {
  '\n'
  '## namespace portions\n'
  '\n'
- 'the following 11 portions are currently included in this namespace:\n'
+ 'the following 4 portions are currently included in this namespace:\n'
  '\n'
- '* [aedev_setup_project](https://pypi.org/project/aedev_setup_project "aedev namespace portion aedev_setup_project")\n'
- '* [aedev_tpl_project](https://pypi.org/project/aedev_tpl_project "aedev namespace portion aedev_tpl_project")\n'
- '* [aedev_tpl_namespace_root](https://pypi.org/project/aedev_tpl_namespace_root "aedev namespace portion '
- 'aedev_tpl_namespace_root")\n'
- '* [aedev_tpl_app](https://pypi.org/project/aedev_tpl_app "aedev namespace portion aedev_tpl_app")\n'
- '* [aedev_git_repo_manager](https://pypi.org/project/aedev_git_repo_manager "aedev namespace portion '
- 'aedev_git_repo_manager")\n'
- '* [aedev_pythonanywhere](https://pypi.org/project/aedev_pythonanywhere "aedev namespace portion '
- 'aedev_pythonanywhere")\n'
- '* [aedev_setup_hook](https://pypi.org/project/aedev_setup_hook "aedev namespace portion aedev_setup_hook")\n'
- '* [aedev_project_tpls](https://pypi.org/project/aedev_project_tpls "aedev namespace portion aedev_project_tpls")\n'
  '* [aedev_app_tpls](https://pypi.org/project/aedev_app_tpls "aedev namespace portion aedev_app_tpls")\n'
  '* [aedev_namespace_root_tpls](https://pypi.org/project/aedev_namespace_root_tpls "aedev namespace portion '
  'aedev_namespace_root_tpls")\n'
+ '* [aedev_project_tpls](https://pypi.org/project/aedev_project_tpls "aedev namespace portion aedev_project_tpls")\n'
  '* [aedev_project_manager](https://pypi.org/project/aedev_project_manager "aedev namespace portion '
  'aedev_project_manager")\n'),
     'long_description_content_type': 'text/markdown',
@@ -99,9 +88,8 @@ setup_kwargs = {
         'Repository': 'https://gitlab.com/aedev-group/aedev_aedev',
         'Source': 'https://aedev.readthedocs.io/en/latest/_modules/aedev/aedev.html'},
     'python_requires': '>=3.9',
-    'setup_requires': [],
     'url': 'https://gitlab.com/aedev-group/aedev_aedev',
-    'version': '0.3.26',
+    'version': '0.3.27',
     'zip_safe': False,
 }
 

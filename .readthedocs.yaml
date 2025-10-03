@@ -1,4 +1,4 @@
-# THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.project_tpls v0.3.49
+# THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.project_tpls v0.3.58
 # ReadTheDocs configuration file (see https://docs.readthedocs.io/en/stable/config-file/v2.html for details) to use
 # .. actual versions of python/Sphinx/.. (see https://docs.readthedocs.io/en/stable/build-default-versions.html)
 version: 2
@@ -11,8 +11,9 @@ build:
 sphinx:
    configuration: docs/conf.py
 
-formats:
-    - pdf
+# ae-3.10.25 : commented next 2 lines due to PDF build bug (https://github.com/readthedocs/readthedocs.org/issues/10015)
+# formats:
+#   - pdf
 
 python:
    install:

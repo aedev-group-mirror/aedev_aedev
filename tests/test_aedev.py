@@ -1,4 +1,4 @@
-# THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.project_tpls v0.3.49
+# THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.project_tpls v0.3.58
 # pylint: disable=invalid-name
 """ default integration and unit tests for new app/namespace-root/aedev-template/... projects.
 

@@ -6,8 +6,6 @@ installation of pjm
 
 to installing this tool open a console window and run the following command::
 
-    .. code-block:: shell
-
         pip install aedev_project_manager
 
 after the installation the commands ``project-manager`` and its shortcut ``pjm`` will be available in your OS console.
@@ -36,14 +34,10 @@ command line options and action arguments
 the pjm command line consist of options, action keywords, action arguments and optional
 action argument flags::
 
-    .. code-block:: shell
-
         pjm [options] [action-keywords] [action-arguments] [action-flags]
 
 executing ``pjm`` with the `--help` command line option (short `-h`) displays a short summary of the available
 command line options::
-
-    .. code-block:: shell
 
         pjm --help
 
@@ -58,15 +52,11 @@ can be specified for any action. other options, like e.g. the filter options `--
 execute ``pjm`` with the :func:`~aedev.project_manager.__main__.show_actions` action to display a brief summary of all
 the available/registered actions for a project::
 
-    .. code-block:: shell
-
         pjm show_actions
 
 the ``action-keywords`` argument is composed of several words, separated by either a space character, a hyphen character
 or an underscore character. some actions can even be abbreviated by a single word shortcut. therefore the following four
 commands are identical/equivalent::
-
-    .. code-block:: shell
 
         pjm show_actions
         pjm show-actions
@@ -78,15 +68,11 @@ get a more verbose output. e.g. to include for each listed action also their ``a
 their supported project types and their action shortcut, simply add these options to command line of the
 :func:`~aedev.project_manager.__main__.show_actions` action::
 
-    .. code-block:: shell
-
         pjm --verbose --debug_level=2 show_actions
 
 the equivalent command line using the short option form (with only one leading hyphen character), and the shortcut of
 the :func:`~aedev.project_manager.__main__.show_actions` action (which is
 :func:`actions <aedev.project_manager.__main__.show_actions>`) would look like::
-
-    .. code-block:: shell
 
         pjm -v -D 2 actions
 
@@ -102,8 +88,6 @@ the action :meth:`~aedev.project_manager.__main__.PythonanywhereCom.check_deploy
 with a default value of ``False``. specifying this flag on the command line is switching the flag value to ``True``. the
 resulting flag value can also be specified on the command line by adding an equal character ('=') to the flag name,
 directly followed by the flag value. so the following two commands are identical::
-
-    .. code-block:: shell
 
         pjm check_deploy ... CLEANUP
         pjm check_deploy ... CLEANUP=True
@@ -140,8 +124,6 @@ a quick overview over the current project version numbers on (1) your local mach
 remotes, the project releases on (4) the PyPI and (5) your web server (only for Django projects) can be archived with
 the :func:`~aedev.project_manager.__main__.show_versions` action (short: ``versions``):
 
-.. code-block:: shell
-
         pjm versions
 
 the :func:`~aedev.project_manager.__main__.check_integrity` action (short: ``check``) is proofing
@@ -150,8 +132,6 @@ the integrity of your project on your local machine. this includes linting and s
 the unit and integration tests (using `pytest <https://docs.pytest.org/>`__),
 test coverage (using `coverage.py <https://coverage.readthedocs.io/>`__) and
 if the outsourced project files, created from templates, are up-to-date:
-
-.. code-block:: shell
 
         pjm check
 
@@ -164,8 +144,6 @@ the general status overview of your project on the local machine and on the remo
 action :func:`~aedev.project_manager.__main__.show_status` (short: ``status``). run this action to display the current
 branch name, a compact ``git diff`` between your working tree against the locally and remotely committed project files
 and a recommendation which pjm action should be executed next:
-
-.. code-block:: shell
 
         pjm status
 
@@ -275,14 +253,10 @@ set operators of python (`|` for union, `&` for intersection, `-` for difference
 for example to show the project versions of namespace portions with uncommitted changes, execute the following command
 in the root folder of the namespace root project::
 
-    .. code-block:: shell
-
         pjm show_children_versions modified
 
 to additionally restrict the last example to projects with uncommitted changes in the
 :data:`~aedev.project_manager.__main__.MAIN_BRANCH` run::
-
-    .. code-block:: shell
 
         pjm show_children_versions "modified & develop"
 
@@ -294,8 +268,6 @@ with the same name as the specified option.
 
 for example to only show the versions of projects with uncommitted changes in the branch ``branch_name`` run::
 
-    .. code-block:: shell
-
         pjm --filterBranch=branch_name show_children_versions "modified & filterBranch"
 
 .. hint::
@@ -306,14 +278,10 @@ for example to only show the versions of projects with uncommitted changes in th
 in general, any bulk action can be restricted to only process children/portions projects that have the specified
 branch name checked-out. e.g. to only process all children that have checked out the branch ``branch_name`` run::
 
-    .. code-block:: shell
-
         pjm --filterBranch=branch_name <any_bulk_action> filterBranch
 
 exactly the same selection result could be achieved via a more complex Python expression, using the
 `--filterExpression` option/children-set-expression::
-
-    .. code-block:: shell
 
         pjm --filterExpression="_git_current_branch(chi_pdv)=='branch_name'" <any_bulk_action> filterExpression
 
@@ -326,14 +294,10 @@ exactly the same selection result could be achieved via a more complex Python ex
 
 the next example is selection all children with a project package version number below or equal to ``1.2.3``::
 
-    .. code-block:: shell
-
         pjm --filterExpression "project_version<='1.2.3'" <children_bulk_action> filterExpression
 
 the example underneath is showing the local, remote and PyPI versions of the children projects that have a branch
 (checked-out or not) with the name ``branch_name`` in their repository::
-
-    .. code-block:: shell
 
         pjm -F "'branch_name' in _git_branches(chi_pdv)" show_children_versions filterExpression
 
@@ -343,47 +307,33 @@ the following bulk actions can be executed, e.g. from within the root folder of 
     * :func:`~aedev.project_manager.__main__.new_children` to increment the versions and refresh outsourced
       files from templates::
 
-        .. code-block:: shell
-
             pjm -b=branch_name new_children modified
 
     * :func:`~aedev.project_manager.__main__.prepare_children_commit` to prepare the commit message files
       (after you implemented all changes into the above created branch with the name ``branch_name``)::
 
-        .. code-block:: shell
-
             pjm prepare_children_commit "commit message for branch_name" modified
 
     * :func:`~aedev.project_manager.__main__.commit_children` to commit changes to the local git repositories::
-
-        .. code-block:: shell
 
             pjm commit_children modified
 
     * :meth:`~aedev.project_manager.__main__.GitlabCom.push_children` to push the committed changes
       to the remote repositories::
 
-        .. code-block:: shell
-
             pjm --filterBranch=branch_name push_children filterBranch
 
     * :meth:`~aedev.project_manager.__main__.GitlabCom.request_children_merge` to merge pushed changes to the main
       branches on the remote host (without a repository forg add the options: -f -u=group_or_user_name)::
 
-        .. code-block:: shell
-
             pjm --filterBranch=branch_name request_children_merge filterBranch
 
     * :meth:`~aedev.project_manager.__main__.GitlabCom.release_children` to bulk-release the project packages to PyPI::
-
-        .. code-block:: shell
 
             pjm --filterBranch=branch_name release_children filterBranch
 
     * :func:`~aedev.project_manager.__main__.install_children_editable`: updates/updates editable installations
       of your local projects into your virtual environment::
-
-        .. code-block:: shell
 
             pjm -F "'branch_name' in _git_branches(chi_pdv)" install_children_editable filterExpression
 
@@ -579,7 +529,7 @@ the following ``pjm`` actions:
       - create your fork or update an exiting fork (for already forked projects).
     * :func:`renew <aedev.project_manager.__main__.new_project>`
       - update/refresh/renew the files created from templates,
-        update/bump your project version and create a new feature branch.
+      update/bump your project version and create a new feature branch.
     * :func:`prepare <aedev.project_manager.__main__.prepare_commit>`
       - create a commit message after all planned changes/additions are implemented.
     * :func:`commit <aedev.project_manager.__main__.commit_project>`
@@ -594,7 +544,7 @@ you can initiate the following ``pjm`` actions:
 
     * :meth:`release <aedev.project_manager.__main__.GitlabCom.release_project>`
       - merge the changes from a merge request into the main branch ({MAIN_BRANCH})
-        and create a new project release at PyPI.
+      and create a new project release at PyPI.
     * :meth:`deploy <aedev.project_manager.__main__.PythonanywhereCom.deploy_project>`
       - deployment of the new/changed project (only available for web projects).
 

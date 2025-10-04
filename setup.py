@@ -89,7 +89,7 @@ setup_kwargs = {
         'Source': 'https://aedev.readthedocs.io/en/latest/_modules/aedev/aedev.html'},
     'python_requires': '>=3.9',
     'url': 'https://gitlab.com/aedev-group/aedev_aedev',
-    'version': '0.3.27',
+    'version': '0.3.28',
     'zip_safe': False,
 }
 

@@ -106,7 +106,7 @@ setup_kwargs = {
             'twine==6.2.0',
             'types-Pillow==10.2.0.20240822',
             'types-requests==2.32.4.20260107',
-            'types-setuptools==80.9.0.20251223',
+            'types-setuptools==80.10.0.20260124',
             'typing==3.7.4.3',
             'typing_extensions==4.15.0',
             'urllib3==2.4.0',
@@ -177,7 +177,7 @@ setup_kwargs = {
     },
     'python_requires': '>=3.12',
     'url': 'https://gitlab.com/aedev-group/aedev_aedev',
-    'version': '0.3.29',
+    'version': '0.3.30',
     'zip_safe': False,
 }
 

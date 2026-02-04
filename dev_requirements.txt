@@ -1,6 +1,9 @@
-# no OUTSOURCED_MARKER to not wipe/overwrite the registered aedev namespace portions
+# no PLACEHOLDER_TEMPLATE_MARKER to not wipe/overwrite the registered aedev namespace portions
+aedev_project_tpls
 aedev_app_tpls
 aedev_namespace_root_tpls
-aedev_project_tpls
-aedev_aedev
+aedev_base
+aedev_commands
+aedev_project_vars
 aedev_project_manager
+aedev_aedev

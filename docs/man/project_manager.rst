@@ -44,9 +44,9 @@ command line options::
 all command line options are available in a long form, preceded with two leading hyphen characters. most of them are
 also available in a short form, as a single character, preceded with a single hyphen character.
 
-general command line options like e.g. `--verbose` (`-v`), `--debug_level` (`-D`), `--path` (`-p`) or `--project` (`-P`)
-can be specified for any action. other options, like e.g. the filter options `--filterBranch` (`-B`) and
-`--filterExpression` (`-F`), are only supported for bulk actions.
+general command line options like e.g. `--more_verbose` (`-v`), `--debug_level` (`-D`), `--path` (`-p`) or
+`--project` (`-P`) can be specified for any action. other options, like e.g. the filter options `--filterBranch` (`-B`)
+and `--filterExpression` (`-F`), are only supported for bulk actions.
 
 
 execute ``pjm`` with the :func:`~aedev.project_manager.__main__.show_actions` action to display a brief summary of all
@@ -63,12 +63,12 @@ commands are identical/equivalent::
         pjm show actions
         pjm actions
 
-you can add the `--verbose` (-v) and/or :ref:`--debug_level <pre-defined-config-options>` (-D) command line options to
-get a more verbose output. e.g. to include for each listed action also their ``action-arguments`` and ``action-flags``,
+add the `--more_verbose` (-v) and/or :ref:`--debug_level <pre-defined-config-options>` (-D) command line options to get
+a more verbose output. e.g. to include for each listed action also their ``action-arguments`` and ``action-flags``,
 their supported project types and their action shortcut, simply add these options to command line of the
 :func:`~aedev.project_manager.__main__.show_actions` action::
 
-        pjm --verbose --debug_level=2 show_actions
+        pjm --more_verbose --debug_level=2 show_actions
 
 the equivalent command line using the short option form (with only one leading hyphen character), and the shortcut of
 the :func:`~aedev.project_manager.__main__.show_actions` action (which is
@@ -131,7 +131,7 @@ the integrity of your project on your local machine. this includes linting and s
 `flake0 <https://flake8.pycqa.org/>`__ and `pylint <https://www.pylint.org/>`__),
 the unit and integration tests (using `pytest <https://docs.pytest.org/>`__),
 test coverage (using `coverage.py <https://coverage.readthedocs.io/>`__) and
-if the outsourced project files, created from templates, are up-to-date:
+if the managed project files, created from templates, are up-to-date:
 
         pjm check
 
@@ -166,7 +166,7 @@ to search for repositories on the Git remote servers run the action
 :meth:`~aedev.project_manager.__main__.GitlabCom.search_repos`. a detailed overview over a foreign remote
 repository can be displayed with the :meth:`~aedev.project_manager.__main__.GitlabCom.show_remote` action.
 
-.. note:: these actions are cureently only implemented for ``GitLab`` remote servers.
+.. note:: these actions are currently only implemented for ``GitLab`` remote servers.
 
 
 project and repository maintenance actions
@@ -181,8 +181,8 @@ useful actions to create, extend or renew a project repository respectively mult
 :func:`~aedev.project_manager.__main__.new_package`,
 :func:`~aedev.project_manager.__main__.new_playground`,
 :func:`~aedev.project_manager.__main__.new_project`,
-:func:`~aedev.project_manager.__main__.refresh_outsourced`,
-:func:`~aedev.project_manager.__main__.refresh_children_outsourced`.
+:func:`~aedev.project_manager.__main__.refresh_managed`,
+:func:`~aedev.project_manager.__main__.refresh_children_managed`.
 
 actions for your other repository maintenance workflows are e.g.
 :func:`~aedev.project_manager.__main__.clone_project`,
@@ -304,7 +304,7 @@ the example underneath is showing the local, remote and PyPI versions of the chi
 to bulk-release multiple children projects in a :ref:`contribution process <contribution steps>` workflow,
 the following bulk actions can be executed, e.g. from within the root folder of a namespace root project:
 
-    * :func:`~aedev.project_manager.__main__.new_children` to increment the versions and refresh outsourced
+    * :func:`~aedev.project_manager.__main__.new_children` to increment the versions and refresh managed
       files from templates::
 
             pjm -b=branch_name new_children modified
@@ -377,8 +377,8 @@ pjm config variables
 ^^^^^^^^^^^^^^^^^^^^
 
 user credentials not specified by the command line :ref:`config-options` are determined from the
-:ref:`application config variable <config-variables>` via a user- and domain-specific lookup
-with the help of the :meth:`~ae.shell.get_domain_user_variable` method.
+OS environment variables and .env files via a user- and domain-specific lookup
+with the help of the :meth:`~ae.shell.get_domain_user_var` function.
 
 to resolve the value of the not specified `--repo_token` command line option, the lookup first checks if there
 exists an OS environment variable and if not found then it is looking for an
@@ -397,8 +397,8 @@ following order:
 project development variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-this type of configuration variables are compiled by an instance of the :class:`~ae.dev_ops.ProjectDevVars`
-provided by the :mod:`ae.dev_ops` module. the variable values can be configured via the
+this type of configuration variables are compiled by an instance of the :class:`~aedev.project_vars.ProjectDevVars`
+provided by the :mod:`aedev.project_vars` module. the variable values can be configured via the
 OS environment variables or the ``.env`` files, situated in the root folder of a project working tree (or above).
 
 by providing for example the user name (of your account at your repository host server), you don't need to specify

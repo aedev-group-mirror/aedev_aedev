@@ -1,4 +1,4 @@
-# THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.project_tpls v0.3.58
+# THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.project_tpls v0.3.75
 """
 configuration file for the Sphinx documentation builder
 =======================================================
@@ -42,7 +42,7 @@ import sys
 
 from typing import Any, Dict
 
-from ae.dev_ops import ProjectDevVars                       # type: ignore
+from aedev.project_vars import ProjectDevVars                       # type: ignore
 
 # add project root path, above of this file (conf.py) and the docs folder, to sys.path
 project_path = os.path.dirname(os.path.dirname(__file__))

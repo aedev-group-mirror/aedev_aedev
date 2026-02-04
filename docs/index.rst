@@ -1,6 +1,6 @@
 
 ..
-    THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.namespace_root_tpls v0.3.21
+    THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.namespace_root_tpls v0.3.22
 
 namespace portions documentation
 ################################
@@ -105,11 +105,17 @@ of each portion.
     :toctree: _autosummary
     :nosignatures:
 
+    aedev.project_tpls
     aedev.app_tpls
     aedev.namespace_root_tpls
-    aedev.project_tpls
+    aedev.base
+    aedev.commands
+    aedev.project_vars
     aedev.project_manager
     aedev.project_manager.__main__
+    aedev.project_manager.utils
+    aedev.project_manager.codeberg
+    aedev.project_manager.templates
 
 
 manuals and tutorials

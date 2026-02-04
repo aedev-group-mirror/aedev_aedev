@@ -5,7 +5,7 @@ the portions of this namespace are simplifying your Python application or servic
 
     * continuous integration
     * continuous deployment
-    * outsourced text file (maintained centrally)
+    * managed files (generated/renewed from template projects)
     * code and config file templates
     * git repository management (locally and remotely)
     * software development

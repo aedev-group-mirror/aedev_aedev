@@ -1,95 +1,183 @@
-# THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.project_tpls v0.3.58
+# THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.project_tpls v0.3.75
 """ setup of aedev namespace-root: aedev namespace root, providing setup, development and documentation tools/templates for Python projects.. """
-# noinspection PyUnresolvedReferences
 import sys
-print(f"SetUp {__name__=} {sys.executable=} {sys.argv=} {sys.path=}")
-
+# noinspection PyUnresolvedReferences
+import pathlib
 # noinspection PyUnresolvedReferences
 import setuptools
+
+
+print("SetUp " + __name__ + ": " + sys.executable + str(sys.argv) + f" {sys.path=}")
 
 setup_kwargs = {
     'author': 'AndiEcker',
     'author_email': 'aecker2@gmail.com',
-    'classifiers': [       'Development Status :: 3 - Alpha', 'Natural Language :: English', 'Operating System :: OS Independent',
-        'Programming Language :: Python', 'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.9', 'Topic :: Software Development', 'Typing :: Typed'],
-    'description': ('aedev namespace-root: aedev namespace root, providing setup, development and documentation tools/templates for '
- 'Python projects.'),
-    'extras_require': {       'dev': [       'aedev_app_tpls', 'aedev_namespace_root_tpls', 'aedev_project_tpls', 'aedev_aedev',
-                       'aedev_project_manager', 'sphinx', 'sphinx-rtd-theme', 'sphinx_autodoc_typehints',
-                       'sphinx_paramlinks', 'ae_dev_ops', 'anybadge', 'coverage-badge', 'aedev_project_manager',
-                       'flake8', 'mypy', 'pylint', 'pytest', 'pytest-cov', 'pytest-django', 'typing',
-                       'types-setuptools'],
-        'docs': ['sphinx', 'sphinx-rtd-theme', 'sphinx_autodoc_typehints', 'sphinx_paramlinks', 'ae_dev_ops'],
-        'tests': [       'anybadge', 'coverage-badge', 'aedev_project_manager', 'flake8', 'mypy', 'pylint', 'pytest',
-                         'pytest-cov', 'pytest-django', 'typing', 'types-setuptools']},
+    'classifiers': [
+        'Development Status :: 3 - Alpha',
+        'Natural Language :: English',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.12',
+        'Topic :: Software Development',
+        'Typing :: Typed',
+    ],
+    'description': 'aedev namespace-root: aedev namespace root, providing setup, development and documentation tools/templates for Python projects.',
+    'extras_require': {
+        'dev': [
+            'aedev_project_tpls==0.3.75',
+            'aedev_app_tpls==0.3.18',
+            'aedev_namespace_root_tpls==0.3.22',
+            'aedev_base==0.3.1',
+            'aedev_commands==0.3.6',
+            'aedev_project_vars==0.3.5',
+            'aedev_project_manager==0.3.13',
+            'aedev_aedev==0.3.28',
+            'ae-parse-date==0.3.5',
+            'ae_base==0.3.78',
+            'ae_console==0.3.93',
+            'ae_core==0.3.82',
+            'ae_dynamicod==0.3.15',
+            'ae_files==0.3.25',
+            'ae_literal==0.3.35',
+            'ae_managed_files==0.3.4',
+            'ae_paths==0.3.43',
+            'ae_pythonanywhere==0.3.3',
+            'ae_shell==0.3.12',
+            'ae_updater==0.3.17',
+            'anybadge==1.16.0',
+            'argcomplete==3.6.3',
+            'astroid==4.0.2',
+            'certifi==2025.4.26',
+            'cffi==1.17.1',
+            'charset-normalizer==3.4.2',
+            'click==8.3.0',
+            'coverage==7.13.3',
+            'coverage-badge==1.1.2',
+            'cryptography==45.0.4',
+            'Deprecated==1.2.18',
+            'dill==0.4.0',
+            'docutils==0.21.2',
+            'flake8==7.3.0',
+            'id==1.5.0',
+            'idna==3.10',
+            'iniconfig==2.1.0',
+            'isort==6.0.1',
+            'jaraco.classes==3.4.0',
+            'jaraco.context==6.0.1',
+            'jaraco.functools==4.1.0',
+            'jeepney==0.9.0',
+            'keyring==25.6.0',
+            'librt==0.6.3',
+            'markdown-it-py==3.0.0',
+            'mccabe==0.7.0',
+            'mdurl==0.1.2',
+            'more-itertools==10.7.0',
+            'mypy==1.19.1',
+            'mypy_extensions==1.1.0',
+            'nh3==0.2.21',
+            'packaging==25.0',
+            'pathspec==0.12.1',
+            'pillow==12.1.0',
+            'pipx==1.8.0',
+            'platformdirs==4.3.8',
+            'pluggy==1.6.0',
+            'pycodestyle==2.14.0',
+            'pycparser==2.22',
+            'pyflakes==3.4.0',
+            'PyGithub==2.8.1',
+            'Pygments==2.19.1',
+            'pyjnius==1.6.1',
+            'PyJWT==2.10.1',
+            'pylint==4.0.4',
+            'PyNaCl==1.5.0',
+            'pytest==9.0.2',
+            'pytest-cov==7.0.0',
+            'pytest-django==4.11.1',
+            'python-gitlab==8.0.0',
+            'readme_renderer==44.0',
+            'requests==2.32.5',
+            'requests-toolbelt==1.0.0',
+            'rfc3986==2.0.0',
+            'rich==14.0.0',
+            'SecretStorage==3.3.3',
+            'setuptools==80.10.2',
+            'tomlkit==0.13.3',
+            'twine==6.2.0',
+            'types-Pillow==10.2.0.20240822',
+            'types-requests==2.32.4.20260107',
+            'types-setuptools==80.9.0.20251223',
+            'typing==3.7.4.3',
+            'typing_extensions==4.15.0',
+            'urllib3==2.4.0',
+            'userpath==1.9.2',
+            'wheel==0.46.3',
+            'wrapt==1.17.2',
+            'sphinx',
+            'sphinx-rtd-theme',
+            'sphinx_autodoc_typehints',
+            'sphinx_paramlinks',
+            'aedev_project_vars',
+            'anybadge',
+            'coverage-badge',
+            'flake8',
+            'mypy',
+            'pylint',
+            'pytest',
+            'pytest-cov',
+            'pytest-django',
+            'typing',
+            'types-setuptools',
+        ],
+        'docs': [
+            'sphinx',
+            'sphinx-rtd-theme',
+            'sphinx_autodoc_typehints',
+            'sphinx_paramlinks',
+            'aedev_project_vars',
+        ],
+        'tests': [
+            'anybadge',
+            'coverage-badge',
+            'flake8',
+            'mypy',
+            'pylint',
+            'pytest',
+            'pytest-cov',
+            'pytest-django',
+            'typing',
+            'types-setuptools',
+        ],
+    },
     'install_requires': [],
-    'keywords': ['configuration', 'development', 'environment', 'productivity'],
+    'keywords': [
+        'configuration',
+        'development',
+        'environment',
+        'productivity',
+    ],
     'license': 'GPL-3.0-or-later',
-    'long_description': ('<!-- THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.namespace_root_tpls v0.3.21 -->\n'
- '# __aedev__ namespace-root project\n'
- '\n'
- 'aedev namespace-root: aedev namespace root, providing setup, development and documentation tools/templates for '
- 'Python projects.\n'
- '\n'
- '\n'
- '## aedev namespace root package use-cases\n'
- '\n'
- 'this package is the root project of the aedev namespace and their portions (the modules\n'
- 'and sub-packages of the namespace aedev). it provides helpers and templates in order to\n'
- 'bundle and ease the maintenance, for example to:\n'
- '\n'
- '* update and deploy common outsourced files, optionally generated from templates.\n'
- '* merge docstrings of all portions into a single combined and cross-linked documentation.\n'
- '* compile and publish documentation via Sphinx onto [ReadTheDocs](https://aedev.readthedocs.io "aedev on RTD").\n'
- '* bulk refactor multiple portions of this namespace simultaneously using the\n'
- '  [git repository manager tool (__grm__)](https://gitlab.com/aedev-group/aedev_git_repo_manager).\n'
- '\n'
- 'to enable the update and deployment of outsourced files generated from the templates provided by\n'
- 'this root package, add this root package to the development requirements file (dev_requirements.txt)\n'
- 'of each portion project of this namespace. in this entry you can optionally specify the version of\n'
- 'this project.\n'
- '\n'
- 'and because this namespace-root package is only needed for development tasks, it will never need to\n'
- 'be added to the installation requirements file (requirements.txt) of a project.\n'
- '\n'
- 'please check the [git repository manager manual](\n'
- 'https://aedev.readthedocs.io/en/latest/man/git_repo_manager.html "git_repo_manager manual")\n'
- 'for more detailed information on the provided actions of the __grm__ tool.\n'
- '\n'
- '\n'
- '## installation\n'
- '\n'
- 'no installation is needed to use this project for your portion projects, because the __grm__ tool is\n'
- 'automatically fetching this and the other template projects from https://gitlab.com/aedev-group (and\n'
- 'in the specified version).\n'
- '\n'
- 'an installation is only needed if you want to adapt this namespace-root project for your needs or if you want\n'
- 'to contribute to this root package. in this case please follow the instructions given in the\n'
- ':ref:`contributing` document.\n'
- '\n'
- '\n'
- '## namespace portions\n'
- '\n'
- 'the following 4 portions are currently included in this namespace:\n'
- '\n'
- '* [aedev_app_tpls](https://pypi.org/project/aedev_app_tpls "aedev namespace portion aedev_app_tpls")\n'
- '* [aedev_namespace_root_tpls](https://pypi.org/project/aedev_namespace_root_tpls "aedev namespace portion '
- 'aedev_namespace_root_tpls")\n'
- '* [aedev_project_tpls](https://pypi.org/project/aedev_project_tpls "aedev namespace portion aedev_project_tpls")\n'
- '* [aedev_project_manager](https://pypi.org/project/aedev_project_manager "aedev namespace portion '
- 'aedev_project_manager")\n'),
+    'long_description': (pathlib.Path(__file__).parent / 'README.md').read_text(encoding='utf-8'),
     'long_description_content_type': 'text/markdown',
     'name': 'aedev_aedev',
-    'package_data': {'': ['templates/de_spt_namespace-root_de_otf_de_tpl_README.md']},
-    'packages': ['aedev.aedev', 'aedev.aedev.templates'],
-    'project_urls': {       'Bug Tracker': 'https://gitlab.com/aedev-group/aedev_aedev/-/issues',
+    'package_data': {
+        '': [
+            'templates/de_spt_namespace-root_de_otf_de_tpl_README.md',
+        ],
+    },
+    'packages': [
+        'aedev.aedev',
+        'aedev.aedev.templates',
+    ],
+    'project_urls': {
+        'Bug Tracker': 'https://gitlab.com/aedev-group/aedev_aedev/-/issues',
         'Documentation': 'https://aedev.readthedocs.io/en/latest/_autosummary/aedev.aedev.html',
         'Repository': 'https://gitlab.com/aedev-group/aedev_aedev',
-        'Source': 'https://aedev.readthedocs.io/en/latest/_modules/aedev/aedev.html'},
-    'python_requires': '>=3.9',
+        'Source': 'https://aedev.readthedocs.io/en/latest/_modules/aedev/aedev.html',
+    },
+    'python_requires': '>=3.12',
     'url': 'https://gitlab.com/aedev-group/aedev_aedev',
-    'version': '0.3.28',
+    'version': '0.3.29',
     'zip_safe': False,
 }
 

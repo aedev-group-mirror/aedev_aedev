@@ -2,13 +2,11 @@
 import importlib
 
 
-main_imp_name = "aedev.aedev"
-main_module = importlib.import_module(main_imp_name)
+main_module = importlib.import_module('aedev.aedev')
 
 
 def test_version():
     """ test existence of project package version. """
-    # noinspection PyUnresolvedReferences
     pkg_version = main_module.__version__
     assert pkg_version
     assert isinstance(pkg_version, str)

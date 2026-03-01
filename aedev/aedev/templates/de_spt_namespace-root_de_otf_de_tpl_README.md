@@ -1,4 +1,4 @@
-<!-- THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.namespace_root_tpls v0.3.26 -->
+<!-- THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.namespace_root_tpls v0.3.27 -->
 # {portion_name} {project_version}
 
 [![GitLab develop](https://img.shields.io/gitlab/pipeline/{repo_group}/{project_name}/develop?logo=python)](
@@ -70,7 +70,7 @@ more detailed explanations on how to contribute to this project
 
 ## namespace portion documentation
 
-information on the features and usage of this portion are available at
+the documentation of the source code of this portion is available at
 [ReadTheDocs](
 {docs_url}
 "{project_name} documentation").

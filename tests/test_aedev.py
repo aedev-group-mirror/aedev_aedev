@@ -10,7 +10,7 @@ def test_version():
     pkg_version = main_module.__version__
     assert pkg_version
     assert isinstance(pkg_version, str)
-    assert pkg_version.count(".") == 2
+    assert pkg_version.count('.') == 2
 
 
 def test_docstring():

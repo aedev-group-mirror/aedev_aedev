@@ -1,4 +1,4 @@
-# THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.project_tpls v0.3.76
+# THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.project_tpls vlocal
 """
 configuration file for the Sphinx documentation builder
 =======================================================

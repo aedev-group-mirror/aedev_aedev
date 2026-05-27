@@ -357,7 +357,7 @@ requesting the user credentials for the authentication from the remote server co
 
 OS environment variables are mostly used to store credential secrets like authentication tokens, and can get
 declared in various ways. default values for these variables can get specified in ``.env`` files (see
-:func:`~ae.base.load_env_var_defaults`). these defaults getting preceded by the OS environment variable values
+:func:`~ae.system.load_env_var_defaults`). these defaults getting preceded by the OS environment variable values
 declared via a startup shell script (like e.g. ``.bashrc``), and these getting overwritten by variable values
 set directly in an open console/shell.
 

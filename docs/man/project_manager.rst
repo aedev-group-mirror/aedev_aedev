@@ -428,13 +428,13 @@ the git credential storage can be used as the last fallback if your user credent
 the user credentials for actions on git repository hosts (``gitlab.com``/``github.com``/...) like
 :meth:`~aedev.project_manager.__main__.GitlabCom.push_project` can alternatively
 be set and stored via the git configuration settings
-(see `<https://git-scm.com/book/en/v2/Git-Tools-Credential-Storage>`__
-and `<https://stackoverflow.com/questions/46645843>`__).
+(see `<https://git-scm.com/book/en/v2/Git-Tools-Credential-Storage>`__,
+`<https://stackoverflow.com/questions/46645843>`__ and
+`<https://stackoverflow.com/questions/65163081>`__).
 
 .. hint::
-    see `<https://stackoverflow.com/questions/65163081>`__ to disable user/password prompts for fetch and check actions
-    to git repository hoster that don't need authentication (and not using the `token` option), like e.g.
-    :func:`~aedev.project_manager.__main__._git_fetch`.
+    set the OS environment variable ``GIT_ASKPASS=false`` to disable user/password prompts for git commands like
+    ``git fetch`` to repository hosters that actually don't need authentication.
 
 
 pjm example workflows

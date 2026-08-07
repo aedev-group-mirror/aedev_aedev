@@ -1,6 +1,6 @@
 
 ..
-    THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.namespace_root_tpls vlocal
+    THIS FILE IS EXCLUSIVELY MAINTAINED by the project aedev.namespace_root_tpls v0.3.33
 
 namespace portions documentation
 ################################
@@ -12,12 +12,12 @@ welcome to the documentation of the portions (modules and packages) of this free
 .. include:: features_and_examples.rst
 
 
-code maintenance guidelines
-***************************
+code and maintenance guidelines
+*******************************
 
 
-portions code features
-======================
+portions code guidelines
+========================
 
     * open source
     * pure python
@@ -108,7 +108,7 @@ of each portion.
 
 
 .. hint::
-    a not on the ordering: portions with no dependencies are at the
+    a note on the ordering: portions with no dependencies are at the
     begin of the following list. the portions that are depending on
     other portions of the **aedev** namespace
     are listed more to the end.
@@ -118,17 +118,17 @@ of each portion.
     :toctree: _autosummary
     :nosignatures:
 
-    aedev.project_tpls
-    aedev.app_tpls
-    aedev.namespace_root_tpls
     aedev.base
     aedev.commands
     aedev.project_vars
     aedev.project_manager
     aedev.project_manager.__main__
-    aedev.project_manager.utils
     aedev.project_manager.codeberg
     aedev.project_manager.templates
+    aedev.project_manager.utils
+    aedev.project_tpls
+    aedev.namespace_root_tpls
+    aedev.app_tpls
 
 
 manuals and tutorials

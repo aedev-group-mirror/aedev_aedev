@@ -2,7 +2,7 @@
 aedev_base==0.3.12
 aedev_commands==0.3.20
 aedev_project_vars==0.3.25
-aedev_project_manager==0.3.42
+aedev_project_manager==0.3.43
 # template projects (at the end of this file and added aedev_app_tpls to be included into index.rst)
 aedev_app_tpls==0.3.22
 aedev_project_tpls==0.3.105

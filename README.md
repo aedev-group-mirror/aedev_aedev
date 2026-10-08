@@ -50,6 +50,6 @@ the following 7 portions are currently included in this namespace:
 * [aedev_commands](https://pypi.org/project/aedev_commands "aedev namespace portion aedev_commands")
 * [aedev_project_vars](https://pypi.org/project/aedev_project_vars "aedev namespace portion aedev_project_vars")
 * [aedev_project_manager](https://pypi.org/project/aedev_project_manager "aedev namespace portion aedev_project_manager")
+* [aedev_app_tpls](https://pypi.org/project/aedev_app_tpls "aedev namespace portion aedev_app_tpls")
 * [aedev_project_tpls](https://pypi.org/project/aedev_project_tpls "aedev namespace portion aedev_project_tpls")
 * [aedev_namespace_root_tpls](https://pypi.org/project/aedev_namespace_root_tpls "aedev namespace portion aedev_namespace_root_tpls")
-* [aedev_app_tpls](https://pypi.org/project/aedev_app_tpls "aedev namespace portion aedev_app_tpls")

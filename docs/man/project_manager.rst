@@ -85,7 +85,7 @@ for some actions you can optionally specify ``action-flags``. each flag has a de
 if the flag is not specified on the command line.
 
 the action :meth:`~aedev.project_manager.__main__.PythonanywhereCom.check_deploy` e.g. is supporting the flag `CLEANUP`
-with a default value of ``False``. specifying this flag on the command line is switching the flag value to ``True``. the
+with a default value of `False`. specifying this flag on the command line is switching the flag value to `True`. the
 resulting flag value can also be specified on the command line by adding an equal character ('=') to the flag name,
 directly followed by the flag value. so the following two commands are identical::
 

@@ -4,5 +4,7 @@ aedev_commands
 aedev_project_vars
 aedev_project_manager
 aedev_aedev
+# template projects (at the end of this file and added aedev_app_tpls to be included into index.rst)
+aedev_app_tpls
 aedev_project_tpls
 aedev_namespace_root_tpls

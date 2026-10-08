@@ -122,13 +122,13 @@ of each portion.
     aedev.commands
     aedev.project_vars
     aedev.project_manager
-    aedev.project_manager.__main__
     aedev.project_manager.codeberg
     aedev.project_manager.templates
     aedev.project_manager.utils
+    aedev.project_manager.__main__
+    aedev.app_tpls
     aedev.project_tpls
     aedev.namespace_root_tpls
-    aedev.app_tpls
 
 
 manuals and tutorials

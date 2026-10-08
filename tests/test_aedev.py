@@ -1,20 +1,15 @@
 """ aedev_aedev unit tests. """
-import importlib
-
-
-main_module = importlib.import_module('aedev.aedev')
+from aedev.aedev import __doc__, __version__
 
 
 def test_version():
     """ test existence of project package version. """
-    pkg_version = main_module.__version__
-    assert pkg_version
-    assert isinstance(pkg_version, str)
-    assert pkg_version.count('.') == 2
+    assert __version__
+    assert isinstance(__version__, str)
+    assert __version__.count('.') == 2
 
 
 def test_docstring():
     """ test existence of project package docstring. """
-    pkg_docstring = main_module.__doc__
-    assert pkg_docstring
-    assert isinstance(pkg_docstring, str)
+    assert __doc__
+    assert isinstance(__doc__, str)
